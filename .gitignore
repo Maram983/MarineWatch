@@ -3,19 +3,29 @@
 .env.*
 !.env.example
 !**/.env.example
+**/.env
+**/.env.*
+!**/.env.example
 
 # Dependencies and local tooling
 **/node_modules/
 .venv/
+venv/
+__pycache__/
 
-# Generated archives
+# Generated archives and local build output
 *.zip
+**/*.zip
+dist/
+build/
+coverage/
+
+# Editors and OS metadata
+.vscode/
+.DS_Store
+Thumbs.db
 
 # Local legacy repository markers
 FYPROJECT/
 MarineWatch/
 Marinewatch.f/
-
-# OS metadata
-.DS_Store
-Thumbs.db
