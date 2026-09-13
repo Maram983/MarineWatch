@@ -1,0 +1,322 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review report · MarineWatch</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet"><link href="../css/dashboard.css" rel="stylesheet"><link href="../css/admin.css" rel="stylesheet"><link href="../css/reports.css" rel="stylesheet"><link href="../css/responsive.css" rel="stylesheet">
+</head>
+<body data-sb="review">
+  <div class="app-shell">
+    <div data-include="components/sidebar-admin.html"></div>
+    <!-- main content -->
+    <main class="main">
+      <div class="topbar"><button class="menu-toggle"><i class="fa-solid fa-bars"></i></button><h1 class="page-title">Review report</h1>
+        <div class="top-actions"><a href="review-reports.html" class="btn btn-ghost" aria-label="Back to queue"><i class="fa-solid fa-arrow-left"></i></a></div>
+      </div>
+      <div class="page-content">
+        <div class="review-detail-grid">
+          <div>
+            <div class="panel">
+              <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+                <div><h2 id="rTitle" style="margin:0">Loading…</h2><small id="rMeta" class="text-muted-2"></small></div>
+                <!-- r badges -->
+                <div id="rBadges"></div>
+              </div>
+              <div class="gallery mt-3 report-gallery"></div>
+              <!-- image preview overlay -->
+              <div id="imagePreviewOverlay" class="image-preview-overlay" hidden>
+                <div class="image-preview-frame">
+                  <button type="button" class="image-preview-close btn btn-sm btn-outline-light"><i class="fa-solid fa-times"></i></button>
+                  <!-- image preview image -->
+                  <img id="imagePreviewImage" src="" alt="Preview" />
+                </div>
+              </div>
+              <h4 class="mt-3">Description</h4>
+              <!-- r desc -->
+              <p class="text-muted-2" id="rDesc"></p>
+              <div class="detail-meta-grid">
+                <div class="m-item"><div class="l">Type</div><div class="v" id="rType"></div></div>
+                <div class="m-item"><div class="l">Severity</div><div class="v" id="rSev"></div></div>
+                <div class="m-item"><div class="l">ESI score</div><div class="v" id="rEsi"></div></div>
+                <div class="m-item"><div class="l">Location</div><div class="v" id="rLoc"></div></div>
+                <div class="m-item"><div class="l">Date observed</div><div class="v" id="rDate"></div></div>
+              </div>
+              <div class="mt-3">
+                <label class="form-label" for="severityOverride">Override severity level</label>
+                <p class="text-muted-2" style="font-size:.82rem;margin-top:-4px">Severity is computed automatically from the ESI model — override here only if the computed level doesn't match what you observe.</p>
+                <div class="d-flex gap-2">
+                  <!-- severity override -->
+                  <select class="form-select" id="severityOverride" style="max-width:220px">
+                    <option value="low">Low</option>
+                    <option value="medium">Medium</option>
+                    <option value="high">High</option>
+                  </select>
+                  <button type="button" class="btn btn-outline-navy" id="btnSaveSeverity">Save</button>
+                </div>
+              </div>
+              <div class="review-actions-bar">
+                <!-- btn approve -->
+                <button class="btn btn-success flex-fill" id="btnApprove"><i class="fa-solid fa-check me-2"></i>Approve & publish</button>
+                <!-- btn invest -->
+                <button class="btn btn-navy flex-fill" id="btnInvest"><i class="fa-solid fa-flag me-2"></i>Mark investigating</button>
+                <!-- btn reject -->
+                <button class="btn btn-danger flex-fill" id="btnReject"><i class="fa-solid fa-xmark me-2"></i>Reject</button>
+              </div>
+              <div class="mt-3">
+              </div>
+            </div>
+          </div>
+          <div>
+            <div class="panel mb-3">
+              <h3>Location</h3>
+              <!-- r map -->
+              <div id="rMap" class="report-map"></div>
+              <div class="mt-2"><span class="mw-badge mw-badge-blue" id="coord">—</span></div>
+            </div>
+            <div class="panel mb-3 reporter-panel">
+              <h3>Reporter</h3>
+              <div class="d-flex align-items-center gap-3">
+                <!-- rep av -->
+                <div id="repAv" class="avatar" style="width:48px;height:48px;border-radius:50%;background:var(--mw-teal);color:#fff;display:inline-flex;align-items:center;justify-content:center;font-weight:700">AD</div>
+                <div><strong id="repName">—</strong><br><small class="text-muted-2" id="repRole">Certified diver</small></div>
+              </div>
+              <div class="d-flex gap-2 mt-3">
+
+            </div>
+            
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script>
+    document.addEventListener('mw:ready', async () => {
+      const id = new URLSearchParams(location.search).get('id');
+      if (!id) {
+        document.getElementById('rTitle').textContent = 'Report not found';
+        document.getElementById('rMeta').textContent = '';
+        return;
+      }
+
+      const token = localStorage.getItem('mw_token');
+      let report = null;
+      let images = [];
+      let lat = 0;
+      let lng = 0;
+
+      if (!token) {
+        mwToast('Please log in to view report details.', 'warn');
+      } else {
+        try {
+          const response = await fetch(window.apiUrl(`/api/reports/${encodeURIComponent(id)}`), {
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+          });
+          const data = await response.json();
+          if (!response.ok) {
+            throw new Error(data.message || 'Could not load report details.');
+          }
+          report = data.report;
+          images = data.images || [];
+        } catch (error) {
+          console.error(error);
+          mwToast(error.message || 'Could not load report details.', 'warn');
+        }
+      }
+
+      if (!report) {
+        document.getElementById('rTitle').textContent = 'Report not available';
+        document.getElementById('rMeta').textContent = '';
+        document.getElementById('rDesc').textContent = 'Log in to see the report details.';
+        document.getElementById('rType').textContent = '-';
+        document.getElementById('rSev').innerHTML = MW.severityBadge('medium');
+        document.getElementById('rLoc').textContent = '-';
+        document.getElementById('rDate').textContent = '-';
+        document.getElementById('coord').textContent = '—';
+        document.getElementById('repName').textContent = 'Unknown reporter';
+        document.getElementById('repRole').textContent = 'Log in to view';
+        document.getElementById('repAv').textContent = 'NA';
+        return;
+      }
+
+      function parseCoordinate(value) {
+        if (value === undefined || value === null || value === '') return null;
+        const parsed = Number(value);
+        return Number.isFinite(parsed) ? parsed : null;
+      }
+
+      lat = parseCoordinate(report.latitude || report.lat || report.latitude_raw || report.lat_raw);
+      lng = parseCoordinate(report.longitude || report.lng || report.longitude_raw || report.lng_raw);
+
+      const displayDate = MW.formatDateString(report.observed_date || report.date || report.created_at || report.createdAt);
+      const displayLocation = report.location?.trim() || (lat !== null && lng !== null ? `${lat.toFixed(4)}, ${lng.toFixed(4)}` : 'Unknown location');
+
+      document.getElementById('rTitle').textContent = report.title || 'Untitled report';
+      document.getElementById('rMeta').textContent = `${report.id} · ${displayDate || 'unknown'}`;
+      document.getElementById('rBadges').innerHTML = MW.severityBadge(report.severity || 'medium') + ' ' + MW.statusBadge(report.status || 'pending');
+      document.getElementById('rDesc').textContent = report.description || 'No description available.';
+      document.getElementById('rType').textContent = report.type || report.pollution_type || 'General';
+      document.getElementById('rSev').innerHTML = MW.severityBadge(report.severity || 'medium');
+      document.getElementById('rEsi').textContent = report.esi_score !== null && report.esi_score !== undefined
+        ? `${report.esi_score} / 10`
+        : '—';
+      const severityOverride = document.getElementById('severityOverride');
+      if (severityOverride) {
+        severityOverride.value = report.severity || 'medium';
+      }
+      document.getElementById('rLoc').textContent = displayLocation;
+      document.getElementById('rDate').textContent = displayDate || 'Unknown';
+      document.getElementById('coord').textContent = lat !== null && lng !== null ? `${lat.toFixed(4)}, ${lng.toFixed(4)}` : '—';
+
+      const hasValidCoords = lat !== null && lng !== null;
+      const map = L.map('rMap', { scrollWheelZoom: false }).setView(hasValidCoords ? [lat, lng] : [23.8859, 45.0792], hasValidCoords ? 11 : 6);
+      L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png').addTo(map);
+      if (hasValidCoords) {
+        L.marker([lat, lng]).addTo(map);
+      }
+      setTimeout(() => map.invalidateSize(), 120);
+
+      const reporterObj = report.reporter || {};
+      const reporterDisplay = reporterObj.full_name || report.full_name || reporterObj.name || report.reporter || 'Unknown reporter';
+      const reporterRoleText = reporterObj.certification_number ? 'Certified diver' : (reporterObj.email || 'Verified reporter');
+      document.getElementById('repName').textContent = reporterDisplay;
+      document.getElementById('repRole').textContent = reporterRoleText;
+      document.getElementById('repAv').textContent = ((reporterDisplay).split(' ').filter(Boolean).slice(0, 2).map(word => word[0].toUpperCase()).join('')) || 'AD';
+
+      const gallery = document.querySelector('.gallery');
+      const previewOverlay = document.getElementById('imagePreviewOverlay');
+      const previewImage = document.getElementById('imagePreviewImage');
+
+      if (gallery) {
+        if (images.length) {
+          gallery.classList.remove('no-images');
+          gallery.innerHTML = images.map((image) => {
+            const raw = image.image_path || image.path || image.url || '';
+            const src = raw.startsWith('http') ? raw : `${window.API_BASE_URL}${raw}`;
+            return `<div class="g-thumb" data-src="${src}"><img src="${src}" alt="Report image"></div>`;
+          }).join('');
+
+          gallery.addEventListener('click', (event) => {
+            const thumb = event.target.closest('.g-thumb');
+            if (!thumb) return;
+            const src = thumb.dataset.src;
+            if (!src || !previewOverlay || !previewImage) return;
+            previewImage.src = src;
+            previewOverlay.hidden = false;
+          });
+        } else {
+          gallery.classList.add('no-images');
+          gallery.innerHTML = '';
+        }
+      }
+
+      if (previewOverlay) {
+        previewOverlay.addEventListener('click', (event) => {
+          if (event.target === previewOverlay || event.target.closest('.image-preview-close')) {
+            previewOverlay.hidden = true;
+            if (previewImage) previewImage.src = '';
+          }
+        });
+
+        document.addEventListener('keydown', (event) => {
+          if (!previewOverlay.hidden && event.key === 'Escape') {
+            previewOverlay.hidden = true;
+            if (previewImage) previewImage.src = '';
+          }
+        });
+      }
+
+      document.getElementById('btnSaveSeverity').addEventListener('click', async () => {
+        const newSeverity = document.getElementById('severityOverride').value;
+        try {
+          const response = await fetch(window.apiUrl(`/api/admin/reports/${encodeURIComponent(id)}/severity`), {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ severity: newSeverity })
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || 'Could not update severity.');
+          document.getElementById('rSev').innerHTML = MW.severityBadge(newSeverity);
+          mwToast('Severity updated', 'success');
+        } catch (error) {
+          console.error(error);
+          mwToast(error.message || 'Could not update severity.', 'error');
+        }
+      });
+
+      document.getElementById('btnApprove').addEventListener('click', async () => {
+        if (!confirm('Approve and publish this report?')) return;
+        try {
+          const response = await fetch(window.apiUrl(`/api/admin/reports/${encodeURIComponent(id)}/approve`), {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            }
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || 'Could not approve report.');
+          mwToast('Report approved & published', 'success');
+          setTimeout(() => location.href = 'review-reports.html', 700);
+        } catch (error) {
+          console.error(error);
+          mwToast(error.message || 'Could not approve report.', 'error');
+        }
+      });
+
+      document.getElementById('btnInvest').addEventListener('click', async () => {
+        if (!confirm('Mark this report as investigating?')) return;
+        try {
+          const response = await fetch(window.apiUrl(`/api/admin/reports/${encodeURIComponent(id)}`), {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            },
+            body: JSON.stringify({ status: 'investigating' })
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || 'Could not update report.');
+          mwToast('Marked as investigating', 'info');
+        } catch (error) {
+          console.error(error);
+          mwToast(error.message || 'Could not update report.', 'error');
+        }
+      });
+
+      document.getElementById('btnReject').addEventListener('click', async () => {
+        if (!confirm('Reject this report?')) return;
+        try {
+          const response = await fetch(window.apiUrl(`/api/admin/reports/${encodeURIComponent(id)}/reject`), {
+            method: 'PUT',
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${token}`
+            }
+          });
+          const data = await response.json();
+          if (!response.ok) throw new Error(data.message || 'Could not reject report.');
+          mwToast('Report rejected', 'warn');
+          setTimeout(() => location.href = 'review-reports.html', 700);
+        } catch (error) {
+          console.error(error);
+          mwToast(error.message || 'Could not reject report.', 'error');
+        }
+      });
+    });
+  </script>
+</body>
+</html>

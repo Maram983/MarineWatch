@@ -1,0 +1,641 @@
+/* ==========================================================
+   Marine Watch
+   Activities
+   ========================================================== */
+
+/* activities grid */
+.activities-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fill,minmax(330px,1fr));
+    gap:1.4rem;
+}
+
+/* ==========================================================
+   Activity Card
+   ========================================================== */
+
+/* activity card */
+.activity-card{
+    display:flex;
+    flex-direction:column;
+    overflow:hidden;
+
+    background:linear-gradient(180deg, #ffffff 0%, #fbfdff 100%);
+    border:1px solid var(--mw-border);
+    border-radius:22px;
+
+    box-shadow:0 10px 28px rgba(10, 37, 64, 0.06);
+
+    transition:.25s ease;
+}
+
+/* activity card */
+.activity-card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 16px 36px rgba(10, 37, 64, 0.12);
+}
+
+/* activity card */
+.activity-card .a-image{
+
+    position:relative;
+
+    display:flex;
+    align-items:flex-end;
+
+    height:145px;
+
+    padding:18px;
+
+    color:#fff;
+
+    background:
+    linear-gradient(
+        135deg,
+        #12375f 0%,
+        #1d5fa5 55%,
+        #18b6d6 100%
+    );
+}
+
+/* activity card */
+.activity-card .date-chip{
+
+    padding:8px 14px;
+
+    background:rgba(255,255,255,.95);
+
+    color:var(--mw-navy);
+
+    font-size:.83rem;
+    font-weight:700;
+
+    border-radius:12px;
+}
+
+/* activity card */
+.activity-card .status-chip{
+
+    position:absolute;
+
+    top:18px;
+    right:18px;
+}
+
+/* activity card */
+.activity-card .a-body{
+
+    display:flex;
+    flex-direction:column;
+    flex:1;
+
+    padding:22px;
+}
+
+/* activity card */
+.activity-card h5{
+
+    margin:0;
+
+    font-size:1.18rem;
+
+    font-weight:700;
+
+    color:var(--mw-navy);
+}
+
+/* activity card */
+.activity-card .a-desc{
+
+    margin-top:12px;
+
+    color:var(--mw-text-2);
+
+    font-size:.92rem;
+
+    line-height:1.65;
+}
+/* ==========================================================
+   Activity Meta
+   ========================================================== */
+
+/* activity card */
+.activity-card .a-meta{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:18px;
+
+    margin:18px 0;
+
+    color:var(--mw-text-2);
+
+    font-size:.88rem;
+}
+
+/* activity card */
+.activity-card .a-meta span{
+
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+}
+
+/* activity card */
+.activity-card .a-meta i{
+
+    color:var(--mw-blue);
+
+    width:16px;
+}
+
+/* ==========================================================
+   Progress
+   ========================================================== */
+
+/* progress bar wrap */
+.progress-bar-wrap{
+
+    overflow:hidden;
+
+    margin-top:8px;
+
+    height:8px;
+
+    background:#edf2f7;
+
+    border-radius:999px;
+}
+
+/* progress bar wrap */
+.progress-bar-wrap .fill{
+
+    height:100%;
+
+    border-radius:999px;
+
+    background:linear-gradient(
+        90deg,
+        #16a34a,
+        #22c55e
+    );
+}
+
+/* ==========================================================
+   Card Footer
+   ========================================================== */
+
+/* activity card */
+.activity-card .a-foot{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:22px;
+
+    padding-top:18px;
+
+    border-top:1px solid var(--mw-border);
+}
+
+/* activity card */
+.activity-card .a-foot .btn{
+
+    min-width:120px;
+}
+
+/* ==========================================================
+   Activity Details Hero
+   ========================================================== */
+
+/* activity hero */
+.activity-hero{
+
+    position:relative;
+
+    overflow:hidden;
+
+    margin-bottom:1rem;
+    padding:1.2rem 1.3rem;
+    border-radius:20px;
+    color:#fff;
+    background:
+    linear-gradient(
+        135deg,
+        #12375f 0%,
+        #1d5fa5 55%,
+        #18b6d6 100%
+    );
+    box-shadow:0 10px 24px rgba(10, 37, 64, 0.12);
+}
+
+/* activity hero */
+.activity-hero h1{
+
+    margin:.3rem 0;
+
+    color:#fff;
+
+    font-size:1.75rem;
+
+    font-weight:800;
+}
+
+/* activity hero */
+.activity-hero .a-meta{
+
+    display:flex;
+    flex-wrap:wrap;
+
+    gap:12px;
+
+    margin-top:10px;
+
+    opacity:.95;
+
+    font-size:0.88rem;
+}
+
+/* activity hero */
+.activity-hero .a-meta span{
+
+    display:flex;
+    align-items:center;
+
+    gap:6px;
+}
+
+/* activity detail grid */
+.activity-detail-grid{
+
+    display:grid;
+
+    grid-template-columns:2fr 1fr;
+
+    gap:1rem;
+}
+
+/* activity detail grid */
+.activity-detail-grid .panel {
+    border-radius:20px;
+    box-shadow:0 10px 24px rgba(10, 37, 64, 0.05);
+}
+
+/* a map.report map */
+#aMap.report-map {
+    height: 220px;
+    min-height: 220px;
+}
+
+/* admin tabs */
+.admin-tabs{
+
+    display:flex;
+
+    gap:6px;
+
+    padding:5px;
+
+    background:#fff;
+
+    border:1px solid var(--mw-border);
+
+    border-radius:14px;
+
+    width:fit-content;
+
+    margin-bottom:1.6rem !important;
+}
+
+/* admin tabs */
+.admin-tabs button{
+
+    border:none;
+
+    background:transparent;
+
+    padding:11px 18px;
+
+    border-radius:10px;
+
+    font-weight:600;
+
+    color:var(--mw-text-2);
+
+    transition:.25s;
+}
+
+/* admin tabs */
+.admin-tabs button:hover{
+
+    background:#eef6fb;
+}
+
+/* admin tabs */
+.admin-tabs button.active{
+
+    color:#fff;
+
+    background:var(--mw-gradient);
+
+    box-shadow:0 8px 20px rgba(16,95,170,.18);
+}
+/* ==========================================================
+   Participants
+   ========================================================== */
+
+/* participants grid */
+.participants-grid{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+
+    margin-top:18px;
+}
+
+/* participants grid */
+.participants-grid .p-av{
+
+    width:38px;
+    height:38px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    margin-left:-10px;
+
+    color:#fff;
+
+    font-size:.78rem;
+    font-weight:700;
+
+    border:2px solid #fff;
+    border-radius:50%;
+
+    background:linear-gradient(
+        135deg,
+        #0b6488,
+        #22b573
+    );
+
+    box-shadow:0 3px 8px rgba(0,0,0,.08);
+}
+
+/* participants grid */
+.participants-grid .p-av:first-child{
+    margin-left:0;
+}
+
+/* ==========================================================
+   Join Card
+   ========================================================== */
+
+/* panel */
+.panel .progress-bar-wrap{
+    margin-top:10px;
+}
+
+/* panel */
+.panel .btn-block{
+    width:100%;
+}
+
+/* panel */
+.panel h3{
+    margin-bottom:16px;
+}
+
+/* panel */
+.panel .text-muted-2{
+    line-height:1.6;
+}
+
+/* ==========================================================
+   Empty State
+   ========================================================== */
+
+/* mw empty */
+.mw-empty{
+
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+
+    text-align:center;
+
+    background:#fff;
+
+    border:1px dashed var(--mw-border);
+
+    border-radius:18px;
+
+    padding:60px 30px;
+}
+
+/* mw empty */
+.mw-empty i{
+
+    font-size:3rem;
+
+    color:var(--mw-blue);
+
+    margin-bottom:18px;
+}
+
+/* mw empty */
+.mw-empty h4{
+
+    margin-bottom:8px;
+
+    color:var(--mw-navy);
+}
+
+/* mw empty */
+.mw-empty p{
+
+    color:var(--mw-text-2);
+
+    margin:0;
+}
+
+/* ==========================================================
+   Responsive
+   ========================================================== */
+
+/* small screens */
+@media (max-width: 479px) {
+
+    .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .activity-card {
+        border-radius: 16px;
+    }
+
+    .activity-card .a-image {
+        height: 120px;
+        padding: 14px;
+    }
+
+    .activity-card .a-body {
+        padding: 16px;
+    }
+
+    .activity-card h5 {
+        font-size: 1rem;
+        line-height: 1.3;
+    }
+
+    .activity-card .a-desc {
+        font-size: 0.88rem;
+        margin-top: 10px;
+    }
+
+    .activity-card .a-meta {
+        gap: 12px;
+        font-size: 0.8rem;
+        margin: 14px 0;
+    }
+
+    .activity-card .a-foot {
+        flex-direction: column;
+        margin-top: 14px;
+        gap: 8px;
+    }
+
+    .activity-card .a-foot .btn {
+        width: 100%;
+        padding: 0.65rem 1rem;
+        font-size: 0.9rem;
+        min-height: 40px;
+    }
+
+    .activity-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .activity-hero {
+        padding: 1.5rem;
+        margin-bottom: 1rem;
+        border-radius: 16px;
+    }
+
+    .activity-hero h1 {
+        font-size: 1.5rem;
+        line-height: 1.2;
+        margin: 0.5rem 0;
+    }
+
+    .activity-hero .a-meta {
+        flex-direction: column;
+        gap: 10px;
+        font-size: 0.9rem;
+        margin-top: 12px;
+    }
+
+    .admin-tabs {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 1rem !important;
+    }
+
+    .admin-tabs button {
+        padding: 10px 14px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+}
+
+/* small screens */
+@media (min-width: 480px) and (max-width: 767px) {
+
+    .activities-grid {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .activity-card .a-image {
+        height: 130px;
+        padding: 16px;
+    }
+
+    .activity-card .a-body {
+        padding: 18px;
+    }
+
+    .activity-card h5 {
+        font-size: 1.08rem;
+    }
+
+    .activity-card .a-foot {
+        flex-direction: column;
+    }
+
+    .activity-card .a-foot .btn {
+        width: 100%;
+    }
+
+    .activity-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-hero {
+        padding: 2rem;
+    }
+
+    .activity-hero h1 {
+        font-size: 1.65rem;
+    }
+
+    .admin-tabs {
+        width: 100%;
+        overflow-x: auto;
+    }
+
+}
+
+/* small screens */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .activities-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1.3rem;
+    }
+
+    .activity-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .activity-hero {
+        padding: 2rem;
+    }
+
+    .activity-hero h1 {
+        font-size: 1.8rem;
+    }
+
+}
+
+/* responsive */
+@media (min-width: 992px) {
+
+    .activities-grid {
+        grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+    }
+
+    .activity-detail-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+}

@@ -1,0 +1,777 @@
+/* ==========================================================
+   MarineWatch
+   Marine Map
+==========================================================*/
+
+/* =========================
+   Header
+========================= */
+
+/* topbar */
+.topbar{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:20px;
+    position: sticky;
+    top: 0;
+    z-index: 900;
+    min-height: 72px;
+    padding: 1rem 1.75rem;
+    background: rgba(255,255,255,0.94);
+    border-bottom: 1px solid var(--mw-border);
+    backdrop-filter: blur(14px);
+}
+
+/* page heading */
+.page-heading{
+    display:flex;
+    flex-direction:column;
+    flex:1;
+    gap: 0.25rem;
+}
+
+/* page title */
+.page-title{
+    margin:0;
+    font-size:1.17rem;
+    font-weight:800;
+    color:#17324D;
+}
+
+/* page subtitle */
+.page-subtitle{
+    margin:0;
+    color:#7B8CA4;
+    font-size:.95rem;
+    font-weight:500;
+    line-height:1.3;
+}
+
+#mapActions,
+/* topbar */
+.topbar .top-actions {
+    margin-left:auto;
+}
+
+#mapActions .btn,
+/* topbar */
+.topbar .top-actions .btn {
+    height:48px;
+    padding:0 22px;
+    border-radius:14px;
+    font-weight:600;
+    display:flex;
+    align-items:center;
+}
+
+/* =========================
+   Layout
+========================= */
+
+/* map layout */
+.map-layout{
+    display:grid;
+    grid-template-columns:280px 1fr;
+    gap:24px;
+    align-items:stretch;
+    flex: 1 1 auto;
+    min-height: 0;
+}
+
+/* map content */
+.map-content{
+    display:flex;
+    flex-direction:column;
+    flex: 1 1 auto;
+    min-height: 0;
+    height: 100%;
+}
+
+/* page content */
+.page-content {
+    display: flex;
+    flex-direction: column;
+    flex: 1 1 auto;
+    min-height: 0;
+    overflow: hidden;
+}
+
+/* =========================
+   Panels
+========================= */
+
+.map-sidebar .panel,
+.map-container,
+/* details panel */
+.details-panel .panel{
+
+    background:#fff;
+    border:1px solid #E6EDF5;
+    border-radius:22px;
+    box-shadow:0 12px 35px rgba(15,23,42,.06);
+
+}
+
+/* map sidebar */
+.map-sidebar .panel{
+
+    padding:22px;
+
+    position:sticky;
+    top:95px;
+
+}
+
+/* details panel */
+.details-panel .panel{
+
+    padding:24px;
+
+}
+
+/* =========================
+   Search
+========================= */
+
+/* search box */
+.search-box{
+
+    position:relative;
+    margin-bottom:26px;
+
+}
+
+/* search box */
+.search-box i{
+
+    position:absolute;
+    left:18px;
+    top:50%;
+    transform:translateY(-50%);
+    color:#94A3B8;
+    font-size:18px;
+
+}
+
+/* search box */
+.search-box input{
+
+    width:100%;
+    height:54px;
+    border-radius:16px;
+    border:1px solid #D9E3EF;
+    padding-left:52px;
+    font-size:15px;
+    outline:none;
+    transition:.25s;
+
+}
+
+/* search box */
+.search-box input:focus{
+
+    border-color:var(--mw-blue);
+    box-shadow:0 0 0 4px rgba(41,122,224,.12);
+
+}
+
+/* =========================
+   Titles
+========================= */
+
+.map-sidebar h5,
+/* details panel */
+.details-panel h4{
+
+    font-size:1.05rem;
+    font-weight:700;
+    color:#17324D;
+    margin-bottom:16px;
+
+}
+
+/* hr */
+hr{
+
+    margin:26px 0;
+    border-color:#EEF3F8;
+
+}
+
+/* =========================
+   Filter Buttons
+========================= */
+
+/* filter grid */
+.filter-grid{
+
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:12px;
+
+}
+
+/* filter btn */
+.filter-btn{
+
+    height:48px;
+    border-radius:14px;
+    background:#fff;
+    border:1px solid #DCE6F2;
+    font-weight:600;
+    transition:.25s;
+
+}
+
+/* filter btn */
+.filter-btn:hover{
+
+    color:var(--mw-blue);
+    border-color:var(--mw-blue);
+
+}
+
+/* filter btn.active */
+.filter-btn.active{
+
+    background:var(--mw-navy);
+    border-color:var(--mw-navy);
+    color:#fff;
+
+}
+
+/* =========================
+   Select
+========================= */
+
+/* type filter */
+#typeFilter{
+
+    height:50px;
+    border-radius:14px;
+
+}
+
+/* =========================
+   Legend
+========================= */
+
+/* legend */
+.legend{
+
+    display:flex;
+    flex-direction:column;
+    gap:14px;
+
+}
+
+/* legend */
+.legend div{
+
+    display:flex;
+    align-items:center;
+    gap:12px;
+    font-weight:500;
+    color:#4A6077;
+
+}
+
+/* dot */
+.dot{
+
+    width:15px;
+    height:15px;
+    border-radius:50%;
+
+}
+
+.dot.critical{background:#C62828;}
+.dot.high{background:#F57C00;}
+.dot.medium{background:#FBC02D;}
+.dot.low{background:#2E7D32;}
+
+/* =========================
+   Map
+========================= */
+
+/* map container */
+.map-container{
+    padding:16px;
+    display:flex;
+    flex:1 1 auto;
+    flex-direction:column;
+    min-height:0;
+    height:100%;
+}
+
+/* marine map */
+#marineMap{
+    width:100%;
+    height:100%;
+    min-height:0;
+    border-radius:18px;
+    overflow:hidden;
+    flex:1 1 auto;
+}
+
+/* =========================
+   Details
+========================= */
+
+/* details empty */
+.details-empty{
+
+    text-align:center;
+    padding:70px 20px;
+    color:#7C8CA5;
+
+}
+
+/* details empty */
+.details-empty i{
+
+    font-size:58px;
+    color:#D5DFEC;
+    margin-bottom:18px;
+
+}
+
+/* details empty */
+.details-empty h5{
+
+    margin-bottom:8px;
+
+}
+
+/* details card */
+.details-card h2{
+
+    font-size:1.4rem;
+    margin-bottom:20px;
+    color:#17324D;
+
+}
+
+/* detail row */
+.detail-row{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:14px 0;
+    border-bottom:1px solid #EEF3F8;
+
+}
+
+/* detail title */
+.detail-title{
+
+    color:#6B7B91;
+
+}
+
+/* detail value */
+.detail-value{
+
+    font-weight:700;
+    color:#17324D;
+
+}
+
+/* detail description */
+.detail-description{
+
+    margin-top:22px;
+    line-height:1.8;
+    color:#4E6077;
+
+}
+
+/* detail button */
+.detail-button{
+
+    width:100%;
+    margin-top:24px;
+    height:48px;
+    border-radius:14px;
+
+}
+
+/* =========================
+   Marker
+========================= */
+
+/* custom marker */
+.custom-marker{
+
+    background:none;
+    border:none;
+
+}
+
+/* marker circle */
+.marker-circle{
+
+    width:28px;
+    height:28px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    color:#fff;
+    border:2px solid #fff;
+    box-shadow:0 6px 16px rgba(0,0,0,.22);
+    transition:.2s;
+
+}
+
+/* marker circle */
+.marker-circle:hover{
+
+    transform:scale(1.15);
+
+}
+
+/* marker circle */
+.marker-circle i{
+
+    font-size:11px;
+
+}
+
+/* =========================
+   Leaflet
+========================= */
+
+/* leaflet control zoom */
+.leaflet-control-zoom{
+
+    border:none !important;
+    box-shadow:0 10px 24px rgba(0,0,0,.12);
+
+}
+
+/* leaflet control zoom */
+.leaflet-control-zoom a{
+
+    width:36px;
+    height:36px;
+    line-height:36px;
+    font-size:18px;
+
+}
+
+/* =========================
+   Responsive
+========================= */
+
+/* small screens */
+@media (max-width: 479px) {
+
+    .topbar {
+        padding: 0.75rem 1rem;
+        flex-wrap: nowrap;
+        gap: 10px;
+    }
+
+    /* Submit Report / Join Activity: small, on the right */
+    #mapActions {
+        width: auto;
+        order: 2;
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    #mapActions .btn {
+        width: auto;
+        justify-content: center;
+        height: 36px;
+        padding: 0 12px;
+        font-size: 0.8rem;
+        border-radius: 8px;
+        white-space: nowrap;
+    }
+
+    #mapActions .btn i {
+        margin-right: 4px !important;
+    }
+
+    /* Marine Map heading: on the left, text aligned left */
+    .page-heading {
+        width: auto;
+        flex: 1;
+        order: 1;
+        align-items: flex-start;
+        text-align: left;
+        min-width: 0;
+    }
+
+    .topbar .page-heading .page-title {
+        font-size: 1.1rem;
+        margin: 0;
+    }
+
+    .page-subtitle {
+        display: none;
+    }
+
+    /* Legend overlay: hidden on mobile map view */
+    .map-legend {
+        display: none !important;
+    }
+
+    .map-layout {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .map-sidebar .panel {
+        position: static;
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .map-sidebar h5 {
+        font-size: 0.95rem;
+        margin-bottom: 12px;
+    }
+
+    .search-box {
+        margin-bottom: 1rem;
+    }
+
+    .search-box input {
+        height: 44px;
+        padding-left: 40px;
+        font-size: 14px;
+        border-radius: 12px;
+    }
+
+    .search-box i {
+        left: 14px;
+        font-size: 16px;
+    }
+
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 8px;
+    }
+
+    .filter-btn {
+        height: 40px;
+        font-size: 0.85rem;
+        border-radius: 10px;
+        padding: 0.5rem;
+    }
+
+    #typeFilter {
+        height: 44px;
+        font-size: 0.9rem;
+        padding: 0.5rem;
+        border-radius: 10px;
+    }
+
+    #marineMap {
+        height: 100%;
+        border-radius: 14px;
+    }
+
+    .details-panel .panel {
+        padding: 1rem;
+        border-radius: 14px;
+    }
+
+    .details-panel h4 {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    #marineMap {
+        min-height: 300px;
+    }
+
+}
+
+/* small screens */
+@media (min-width: 480px) and (max-width: 767px) {
+
+    .topbar {
+        padding: 1rem 1rem;
+        flex-wrap: wrap;
+    }
+
+    .topbar {
+        flex-wrap: nowrap;
+    }
+
+    #mapActions {
+        width: auto;
+        order: 2;
+        margin-left: 0;
+        flex-shrink: 0;
+    }
+
+    #mapActions .btn {
+        width: auto;
+        height: 40px;
+        padding: 0 14px;
+        font-size: 0.85rem;
+        white-space: nowrap;
+    }
+
+    .page-heading {
+        width: auto;
+        flex: 1;
+        order: 1;
+        align-items: flex-start;
+        text-align: left;
+        min-width: 0;
+    }
+
+    .topbar .page-heading .page-title {
+        font-size: 1.3rem;
+    }
+
+    .page-subtitle {
+        display: none;
+    }
+
+    .map-legend {
+        display: none !important;
+    }
+
+    .map-layout {
+        grid-template-columns: 1fr;
+        gap: 1.2rem;
+    }
+
+    .map-sidebar .panel {
+        position: static;
+        padding: 1.5rem;
+    }
+
+    #marineMap {
+        height: 100%;
+    }
+
+    .filter-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+}
+
+/* small screens */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    .topbar {
+        flex-wrap: wrap;
+    }
+
+    .page-title {
+        font-size: 1.8rem;
+    }
+
+    #mapActions {
+        width: 100%;
+    }
+
+    .map-layout {
+        grid-template-columns: 260px 1fr;
+        gap: 1.5rem;
+    }
+
+    .map-sidebar .panel {
+        position: static;
+    }
+
+    #marineMap {
+        height: 100%;
+    }
+
+    .filter-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+}
+
+/* responsive */
+@media (min-width: 992px) {
+
+    .topbar {
+        flex-wrap: nowrap;
+    }
+
+    .map-layout {
+        grid-template-columns: 280px 1fr;
+        gap: 24px;
+    }
+
+    .map-sidebar .panel {
+        position: sticky;
+        top: 20px;
+        max-height: calc(100vh - 40px);
+        overflow-y: auto;
+    }
+
+    #marineMap {
+        height: 100%;
+    }
+
+}
+
+/* Leaflet popup and container safety */
+.leaflet-container {
+    width: 100% !important;
+    height: auto;
+}
+
+/* leaflet popup content */
+.leaflet-popup-content {
+    max-width: 260px;
+    word-wrap: break-word;
+}
+
+/* leaflet control */
+.leaflet-control {
+    box-shadow: none;
+}
+
+/* Map legend styles */
+.map-legend{
+    background:#fff;
+    padding:8px 10px;
+    border-radius:10px;
+    box-shadow:0 8px 20px rgba(15,23,42,0.08);
+    font-size:0.9rem;
+    color:var(--mw-text);
+    line-height:1;
+}
+
+/* map legend */
+.map-legend .legend-title{
+    font-weight:700;
+    margin-bottom:6px;
+}
+
+/* map legend */
+.map-legend .legend-row{
+    display:flex;
+    align-items:center;
+    gap:8px;
+    margin-bottom:6px;
+}
+
+/* map legend */
+.map-legend .legend-dot{
+    width:12px;
+    height:12px;
+    border-radius:50%;
+    display:inline-block;
+    flex:0 0 12px;
+}
+
+/* map legend */
+.map-legend .legend-label{
+    color:var(--mw-text-2);
+}

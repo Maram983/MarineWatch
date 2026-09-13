@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 540" role="img" aria-label="Marine Watch illustration">
+  <rect width="800" height="540" rx="40" fill="#F5F9FB"/>
+  <path d="M0 380 C140 320, 240 320, 340 370 C430 410, 570 430, 800 340 L800 540 L0 540 Z" fill="#0B6488" opacity="0.16"/>
+  <path d="M0 412 C110 350, 250 340, 360 392 C450 434, 590 444, 800 370" stroke="#0B6488" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <circle cx="560" cy="195" r="68" fill="#FFFFFF"/>
+  <path d="M540 185 C560 150, 620 142, 656 162" stroke="#22B573" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M530 214 C580 214, 608 232, 620 260" stroke="#FF6C3E" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <path d="M170 125 C210 90, 278 92, 316 123" stroke="#022C45" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M182 152 C250 122, 292 126, 332 152" stroke="#18384B" stroke-width="8" fill="none" stroke-linecap="round"/>
+  <circle cx="248" cy="158" r="22" fill="#0B6488" opacity="0.12"/>
+</svg>

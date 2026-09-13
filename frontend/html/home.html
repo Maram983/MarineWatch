@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1">
+
+    <title>MarineWatch</title>
+
+    <meta
+        name="description"
+        content="MarineWatch helps certified divers report marine pollution and supports volunteer cleanup activities across Saudi Arabia.">
+
+    <link
+        rel="icon"
+        href="../assets/favicon.ico">
+
+    <!-- Google Font -->
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com">
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+
+    <!-- Bootstrap -->
+
+    <link
+        href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+        rel="stylesheet">
+
+    <!-- Font Awesome -->
+
+    <link
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        rel="stylesheet">
+
+    <!-- Leaflet (for the public pollution heatmap) -->
+
+    <link
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        rel="stylesheet">
+
+    <!-- Project CSS -->
+
+    <link
+        href="../css/style.css"
+        rel="stylesheet">
+
+    <link
+        href="../css/home.css"
+        rel="stylesheet">
+
+    <link
+        href="../css/responsive.css"
+        rel="stylesheet">
+
+    <style>
+    /* Inline override to force left alignment for the hero on large screens.
+       This has highest precedence and applies only to the home page. */
+    @media (min-width:1200px) {
+        body[data-nav="home"] .hero,
+        body[data-nav="home"] .hero .mw-container,
+        body[data-nav="home"] .hero .row.align-items-center,
+        body[data-nav="home"] .hero .col-lg-8,
+        body[data-nav="home"] .hero .hero-title-light,
+        body[data-nav="home"] .hero .hero-lead-light {
+            text-align: left !important;
+        }
+
+            body[data-nav="home"] .hero .mw-container {
+            max-width: 100% !important;
+            margin-left: 0 !important;
+            padding-left: 220px !important;
+            padding-right: 32px !important;
+        }
+
+        body[data-nav="home"] .hero .row.align-items-center {
+            justify-content: flex-start !important;
+        }
+
+        body[data-nav="home"] .hero .col-lg-8 {
+            max-width: 620px !important;
+            flex: 0 0 56% !important;
+            margin-left: 0 !important;
+        }
+    }
+    </style>
+
+</head>
+
+<body data-nav="home">
+
+    <!-- Navbar -->
+
+    <div data-include="components/navbar.html?v=1"></div>
+
+    <!-- =====================================
+         HERO
+    ====================================== -->
+
+    <!-- section -->
+    <section class="hero hero-ocean">
+
+        <div class="hero-overlay"></div>
+
+<div class="container-fluid hero-container">            
+
+            <div class="row align-items-center gy-5">
+
+                <div class="col-lg-8">
+
+                    <span class="eyebrow">
+
+                        <i class="fa-solid fa-water me-2"></i>
+
+                        Marine Environmental Protection
+
+                    </span>
+
+
+                        
+
+                        <div class="hero-feature">
+                            <i class="fa-solid fa-earth-asia"></i>
+                            <div>
+                                Join the future of marine conservation with MarineWatch.Join the future of marine conservation with MarineWatch.
+
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         ABOUT
+    ====================================== -->
+
+    <!-- section -->
+    <section class="mw-section about-compact">
+
+        <div class="mw-container">
+
+            <div class="about-panel">
+
+                <div class="sec-head">
+
+                    <span class="mw-eyebrow">
+                        About MarineWatch
+                    </span>
+
+                    <h2>
+
+                        Helping Protect Marine Ecosystems
+
+                    </h2>
+
+                    <p>
+
+                        MarineWatch brings together divers, volunteers and environmental authorities to improve marine conservation through pollution reporting and community participation.
+
+                    </p>
+
+                </div>
+
+                <div class="about-steps">
+
+                    <div class="about-step">
+
+                        <div class="step-num">1</div>
+
+                        <h4>Report Pollution</h4>
+
+                        <p>Certified divers can submit pollution reports with photos, location, and environmental details directly from the field.</p>
+
+                    </div>
+
+                    <div class="about-step">
+
+                        <div class="step-num">2</div>
+
+                        <h4>Review Reports</h4>
+
+                        <p>Administrators review submitted reports before publishing them on the Marine Map.</p>
+
+                    </div>
+
+                    <div class="about-step">
+
+                        <div class="step-num">3</div>
+
+                        <h4>Volunteer Activities</h4>
+
+                        <p>Volunteers can participate in cleanup activities and help protect affected marine areas.</p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         HOW IT WORKS
+    ====================================== -->
+
+    <!-- section -->
+    <section class="mw-section bg-foam">
+
+        <div class="mw-container">
+
+            <div class="sec-head">
+
+                <span class="mw-eyebrow">
+
+                    How It Works
+
+                </span>
+
+                <h2>
+
+                    Simple Reporting Process
+
+                </h2>
+
+                <p>
+
+                    MarineWatch follows a simple workflow from reporting pollution to organizing cleanup activities.
+
+                </p>
+
+            </div>
+
+            <div class="workflow">
+
+                <div class="wf-step">
+
+                    <div class="wf-num">
+
+                        1
+
+                    </div>
+
+                    <div class="wf-icon">
+
+                        <i class="fa-solid fa-camera-retro"></i>
+
+                    </div>
+
+                    <h5>
+
+                        Submit Report
+
+                    </h5>
+
+                    <p>
+
+                        A certified diver submits a pollution report with its location and description.
+
+                    </p>
+
+                </div>
+
+                <div class="wf-arrow">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </div>
+
+                <div class="wf-step">
+
+                    <div class="wf-num">
+
+                        2
+
+                    </div>
+
+                    <div class="wf-icon">
+
+                        <i class="fa-solid fa-user-shield"></i>
+
+                    </div>
+
+                    <h5>
+
+                        Review
+
+                    </h5>
+
+                    <p>
+
+                        The administrator checks the report and decides whether to approve or reject it.
+
+                    </p>
+
+                </div>
+
+                <div class="wf-arrow">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </div>
+
+                <div class="wf-step">
+
+                    <div class="wf-num">
+
+                        3
+
+                    </div>
+
+                    <div class="wf-icon">
+
+                        <i class="fa-solid fa-map-location-dot"></i>
+
+                    </div>
+
+                    <h5>
+
+                        Marine Map
+
+                    </h5>
+
+                    <p>
+
+                        Approved reports become visible on the Marine Map to help identify polluted areas.
+
+                    </p>
+
+                </div>
+
+                <div class="wf-arrow">
+
+                    <i class="fa-solid fa-arrow-right"></i>
+
+                </div>
+
+                <div class="wf-step">
+
+                    <div class="wf-num">
+
+                        4
+
+                    </div>
+
+                    <div class="wf-icon">
+
+                        <i class="fa-solid fa-leaf"></i>
+
+                    </div>
+
+                    <h5>
+
+                        Cleanup Activities
+
+                    </h5>
+
+                    <p>
+
+                        Volunteers join environmental activities to help protect and restore marine ecosystems.
+
+                    </p>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         POLLUTION HEATMAP (public, no login required)
+    ====================================== -->
+
+    <!-- heatmap -->
+    <section class="mw-section" id="heatmap">
+
+        <div class="mw-container">
+
+            <div class="sec-head">
+
+                <span class="mw-eyebrow">
+
+                    Community Insights
+
+                </span>
+
+                <h2>
+
+                    Regional Pollution Levels
+
+                </h2>
+
+                <p>
+
+                    Coastal regions are color-coded from approved reports — the more and more severe the reports in an area, the higher its pollution level.
+
+                </p>
+
+            </div>
+
+            <div class="heatmap-box heatmap-compact">
+
+                <!-- heatmap state -->
+                <div class="hotspots-state" id="heatmapState">
+
+                    <i class="fa-solid fa-spinner fa-spin"></i>
+
+                    <span>Loading map...</span>
+
+                </div>
+
+                <!-- pollution heatmap -->
+                <div id="pollutionHeatmap"></div>
+
+                <div class="heatmap-legend">
+                    <span class="legend-item"><span class="legend-dot" style="background:#B0BEC5"></span>No Reports</span>
+                    <span class="legend-item"><span class="legend-dot" style="background:#2E7D32"></span>Low</span>
+                    <span class="legend-item"><span class="legend-dot" style="background:#FBC02D"></span>Moderate</span>
+                    <span class="legend-item"><span class="legend-dot" style="background:#F57C00"></span>High</span>
+                    <span class="legend-item"><span class="legend-dot" style="background:#C62828"></span>Critical</span>
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+        <!-- =====================================
+         CALL TO ACTION
+    ====================================== -->
+
+    <!-- section -->
+    <section class="cta-section cta-compact">
+
+        <div class="mw-container">
+
+            <div class="cta-stack">
+
+                <div class="guide-teaser guide-teaser-mini">
+
+                    <div class="guide-teaser-icon">
+                        <i class="fa-solid fa-book-open"></i>
+                    </div>
+
+                    <div class="guide-teaser-text">
+                        <h3>New to marine pollution reporting?</h3>
+                        <p>Read our short guide to the main types of pollution before you file your first report.</p>
+                    </div>
+
+                    <a href="guide.html" class="btn btn-primary btn-sm">
+                        Read the Guide
+                        <i class="fa-solid fa-arrow-right ms-2"></i>
+                    </a>
+
+                </div>
+
+                <div class="cta-card">
+
+                <h2>
+
+                    Help Protect Saudi Arabia's Marine Environment
+
+                </h2>
+
+                <p>
+
+                    Join MarineWatch and help make marine pollution reporting faster, easier, and more effective.
+
+                </p>
+
+                <div class="cta-buttons">
+
+                    <a
+                        href="register.html"
+                        class="btn btn-primary btn-lg">
+
+                        <i class="fa-solid fa-user-plus me-2"></i>
+
+                        Get Started
+
+                    </a>
+
+                    <a
+                        href="login.html"
+                        class="btn btn-outline-primary btn-lg">
+
+                        <i class="fa-solid fa-right-to-bracket me-2"></i>
+
+                        Sign In
+
+                    </a>
+
+                </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </section>
+
+    <!-- =====================================
+         FOOTER
+    ====================================== -->
+
+    <div data-include="components/footer.html"></div>
+
+
+<!-- Bootstrap -->
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+<!-- Leaflet (for the public pollution heatmap) -->
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<!-- Project Scripts -->
+
+<script src="../js/main.js"></script>
+
+<script src="../js/home.js"></script>
+
+<script src="../js/heatmap.js"></script>
+
+</body>
+
+</html>

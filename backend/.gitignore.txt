@@ -1,0 +1,15 @@
+# Secrets — NEVER commit this file
+.env
+.env.local
+.env.*.local
+
+# Dependencies — reinstalled via npm install, no need to upload
+node_modules/
+
+# Logs
+npm-debug.log*
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

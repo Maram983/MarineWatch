@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Submit a report · MarineWatch</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/dashboard.css" rel="stylesheet">
+  <link href="../css/reports.css" rel="stylesheet">
+  <link href="../css/forms.css" rel="stylesheet">
+  <link href="../css/responsive.css" rel="stylesheet">
+</head>
+<body data-sb="submit">
+  <div class="app-shell">
+    <div data-include="components/sidebar-auto.html"></div>
+    <!-- main content -->
+    <main class="main">
+      <div class="topbar">
+        <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+        <h1 class="page-title">Submit report</h1>
+        <div class="top-actions">
+<a href="diver-dashboard.html" class="user-chip">
+  <!-- top user avatar -->
+  <span class="avatar" id="topUserAvatar">AD</span>
+  <!-- top user name -->
+  <span class="d-none d-md-inline" id="topUserName">User</span>
+</a>
+
+</div>
+      </div>
+      <div class="page-content">
+        <!-- report form -->
+        <form id="reportForm" novalidate>
+          <div class="report-form-grid">
+            <div>
+              <div class="panel mb-3">
+                <div class="panel-header"><i class="fa-solid fa-file-pen"></i><h3>Incident details</h3></div>
+                <div class="mb-3">
+                  <label class="form-label">Title</label>
+                  <input class="form-control" name="title" placeholder="e.g. Plastic waste at Jeddah reef" required>
+                  <div class="error-text">Give the report a short title.</div>
+                </div>
+                <div class="row g-2 align-items-start">
+                  <div class="col-md-6">
+                    <label class="form-label">Pollution type</label>
+                    <select class="form-select" name="type" required style="min-height: 48px; padding: 0.8rem 1rem;">
+                      <option value="">Select type…</option>
+                      <option>Plastic</option><option>Oil</option><option>Chemical</option><option>Fishing gear</option>
+                      <option>Sewage</option><option>Debris</option><option>Coral bleaching</option><option>Other</option>
+                    </select>
+                    <div class="error-text">Choose a type.</div>
+                  </div>
+                  <div class="col-md-6">
+                    <label class="form-label">Date observed</label>
+                    <input type="date" class="form-control" name="date" required style="min-height: 48px;">
+                    <div class="error-text">Select a date.</div>
+                  </div>
+                </div>
+                <div class="mt-3">
+                  <label class="form-label">Affected area</label>
+                  <p class="text-muted-2" style="font-size:.82rem;margin-top:-4px">Used to calculate the Environmental Severity Index — severity is no longer picked manually.</p>
+                  <!-- affected area -->
+                  <div class="severity-grid" id="affectedArea">
+                    <label class="sev-opt low"><input type="radio" name="affected_area" value="small">Small<br><small>&lt;10 m²</small></label>
+                    <label class="sev-opt med active"><input type="radio" name="affected_area" value="medium" checked>Medium<br><small>10–100 m²</small></label>
+                    <label class="sev-opt high"><input type="radio" name="affected_area" value="large">Large<br><small>&gt;100 m²</small></label>
+                  </div>
+                </div>
+              </div>
+
+              <div class="panel mb-3">
+                <div class="panel-header"><i class="fa-solid fa-align-left"></i><h3>Description</h3></div>
+                <div>
+                  <textarea class="form-control" name="description" rows="5" placeholder="Describe what you observed, approximate size, and depth…" required minlength="20"></textarea>
+                  <div class="error-text">Please provide at least 20 characters.</div>
+                </div>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><i class="fa-solid fa-images"></i><h3>Evidence photos/videos</h3></div>
+                  <!-- upload zone -->
+                  <div class="upload-zone" id="uploadZone">
+                    <i class="fa-solid fa-cloud-arrow-up"></i>
+                    <p><strong>Drag & drop files</strong> or click to browse</p>
+                    <button type="button" class="btn btn-outline-navy">Choose files</button>
+                    <!-- file input -->
+                    <input type="file" id="fileInput" accept="image/*,video/*" multiple hidden>
+                  </div>
+                  <!-- thumbs -->
+                  <div class="thumbs" id="thumbs"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="panel mb-3">
+                <div class="panel-header"><i class="fa-solid fa-map-location-dot"></i><h3>Location</h3></div>
+                <p class="text-muted-2" style="font-size:.88rem">Tap the map to set the exact location with precision.</p>
+                <!-- report map -->
+                <div id="reportMap" class="report-map"></div>
+                <div class="coord-display">
+                  <div class="field"><label class="form-label">Latitude</label><input class="form-control" name="lat" required></div>
+                  <div class="field"><label class="form-label">Longitude</label><input class="form-control" name="lng" required></div>
+                </div>
+                <!-- use gps -->
+                <button type="button" class="btn btn-outline-navy btn-block mt-2" id="useGps"><i class="fa-solid fa-location-crosshairs me-2"></i>Use my current location</button>
+              </div>
+
+              <div class="panel">
+                <div class="panel-header"><i class="fa-solid fa-paper-plane"></i><h3>Submit</h3></div>
+                <p class="text-muted-2" style="font-size:.88rem">All reports are reviewed by administrators before publication.</p>
+                <button type="submit" class="btn btn-primary btn-block btn-lg"><i class="fa-solid fa-paper-plane me-2"></i>Submit report</button>
+                <a href="diver-dashboard.html" class="btn btn-ghost btn-block mt-2">Cancel</a>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </main>
+  </div>
+
+  <!-- Success modal -->
+  <div class="modal fade" id="successModal" tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:20px;border:0;overflow:hidden">
+        <div class="modal-body text-center p-4">
+          <div style="width:76px;height:76px;border-radius:50%;background:#DCFCE7;color:#047857;display:inline-flex;align-items:center;justify-content:center;font-size:2rem;margin-bottom:1rem"><i class="fa-solid fa-check"></i></div>
+          <h3>Report submitted</h3>
+          <p class="text-muted-2">Thank you! Your report is queued for review and will appear on the marine map once verified.</p>
+          <div class="d-flex gap-2 justify-content-center mt-3">
+            <a href="my-reports.html" class="btn btn-outline-navy">View my reports</a>
+            <a href="report-success.html" class="btn btn-primary">Continue</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/submit-report.js"></script>
+</body>
+</html>

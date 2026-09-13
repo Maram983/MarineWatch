@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 240" role="img" aria-label="Marine Watch Saudi Arabia logo">
+  <rect width="240" height="240" rx="48" fill="#0B6488"/>
+  <path d="M56 164 C92 108, 148 88, 184 112" stroke="#FFFFFF" stroke-width="16" fill="none" stroke-linecap="round"/>
+  <path d="M74 166 C102 132, 138 126, 168 144" stroke="#FF6C3E" stroke-width="14" fill="none" stroke-linecap="round"/>
+  <circle cx="148" cy="92" r="18" fill="#FFFFFF"/>
+  <circle cx="96" cy="148" r="10" fill="#FFFFFF" opacity="0.9"/>
+</svg>

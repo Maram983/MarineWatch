@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Administrator login · MarineWatch</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/forms.css" rel="stylesheet">
+  <link href="../css/responsive.css" rel="stylesheet">
+</head>
+<body>
+  <a href="home.html" class="auth-back-link" aria-label="Back to home"><i class="fa-solid fa-arrow-left"></i></a>
+
+  <div class="auth-wrap">
+    <div class="auth-visual">
+      <a href="home.html" class="brand"><span class="logo"><i class="fa-solid fa-shield-halved"></i></span> MarineWatch</a>
+      <div class="hero-copy">
+        <h2>Administrator console</h2>
+        <p>Restricted access. Verify reports, moderate content, and manage the MarineWatch community.</p>
+        <ul>
+          <li><i class="fa-solid fa-circle-check"></i> Review pollution reports</li>
+          <li><i class="fa-solid fa-circle-check"></i> Manage users and roles</li>
+          <li><i class="fa-solid fa-circle-check"></i> Access full analytics</li>
+        </ul>
+      </div>
+      <div class="visual-footer">© 2026 MarineWatch · Authorized personnel only</div>
+    </div>
+    <div class="auth-form-side">
+      <div class="auth-card">
+        <div class="admin-shield"><i class="fa-solid fa-shield-halved"></i></div>
+        <h1>Administrator sign in</h1>
+        <p class="sub">This area is restricted to authorized MarineWatch staff.</p>
+        <!-- admin form -->
+        <form id="adminForm" novalidate>
+          <div class="form-group">
+            <label class="form-label">Admin email</label>
+            <input type="email" name="email" class="form-control" placeholder="admin@marinewatch.com" required>
+            <div class="error-text">Enter a valid admin email.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Password</label>
+            <div class="password-wrap">
+              <input type="password" name="password" class="form-control" placeholder="••••••••" required minlength="8">
+              <button type="button" class="toggle-pw"><i class="fa-regular fa-eye"></i></button>
+            </div>
+            <div class="error-text">Password required.</div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">2FA code (optional)</label>
+            <input type="text" name="otp" class="form-control" placeholder="6-digit code" maxlength="6" pattern="\d{6}">
+          </div>
+          <button type="submit" class="btn btn-navy btn-block btn-lg"><i class="fa-solid fa-shield-halved me-2"></i>Access console</button>
+          <div class="auth-footer-links">Not an admin? <a href="login.html" class="small-link">Return to user login</a></div>
+        </form>
+      </div>
+    </div>
+  </div>
+  <script src="../js/main.js"></script>
+  <script src="../js/admin-login.js"></script>
+</body>
+</html>

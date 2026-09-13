@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Review reports · MarineWatch</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet"><link href="../css/dashboard.css" rel="stylesheet"><link href="../css/admin.css" rel="stylesheet"><link href="../css/reports.css" rel="stylesheet"><link href="../css/responsive.css" rel="stylesheet">
+</head>
+<body data-sb="review">
+  <div class="app-shell">
+    <div data-include="components/sidebar-admin.html"></div>
+    <!-- main content -->
+    <main class="main">
+      <div class="topbar"><button class="menu-toggle"><i class="fa-solid fa-bars"></i></button><h1 class="page-title">Review reports</h1></div>
+      <div class="page-content">
+        <!-- tabs -->
+        <div class="admin-tabs" id="tabs">
+          <button class="active" data-tab="pending">Pending <span class="mw-badge mw-badge-amber ms-2" id="tab-pending-count">0</span></button>
+          <button data-tab="approved">Approved <span class="mw-badge mw-badge-green ms-2" id="tab-approved-count">0</span></button>
+          <button data-tab="rejected">Rejected <span class="mw-badge mw-badge-red ms-2" id="tab-rejected-count">0</span></button>
+          <button data-tab="all">All <span class="mw-badge mw-badge-blue ms-2" id="tab-all-count">0</span></button>
+        </div>
+        <div class="panel">
+          <div class="review-toolbar">
+            <div class="search"><i class="fa-solid fa-search"></i><input id="q" class="form-control" placeholder="Search reports…"></div>
+            <div class="reports-toolbar-selects">
+              <!-- f type -->
+              <select id="fType" class="form-select"><option value="">All types</option><option>Plastic</option><option>Oil</option><option>Chemical</option><option>Fishing gear</option><option>Debris</option><option>Bleaching</option></select>
+              <!-- f sev -->
+              <select id="fSev" class="form-select"><option value="">All severity</option><option value="critical">Critical</option><option value="high">High</option><option value="medium">Medium</option><option value="low">Low</option></select>
+            </div>
+          </div>
+          <div class="table-responsive">
+            <!-- table -->
+            <table class="mw-table review-table">
+              <thead><tr><th>Report</th><th>Reporter</th><th>Type</th><th>Severity</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+              <!-- rows -->
+              <tbody id="rows"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/review-reports.js"></script>
+</body>
+</html>

@@ -1,0 +1,508 @@
+/* Admin */
+
+/* admin tabs */
+.admin-tabs {
+    display: flex;
+    gap: 4px;
+
+    width: fit-content;
+
+    margin-bottom: 1.25rem;
+    padding: 4px;
+
+    background: #fff;
+    border: 1px solid var(--mw-border);
+    border-radius: 12px;
+}
+
+/* admin tabs */
+.admin-tabs button {
+    padding: 8px 18px;
+
+    color: var(--mw-text-2);
+    font-weight: 600;
+
+    background: transparent;
+    border: 0;
+    border-radius: 10px;
+
+    cursor: pointer;
+}
+
+/* admin tabs */
+.admin-tabs button.active {
+    color: #fff;
+    background: var(--mw-navy);
+}
+
+/* Toolbar */
+
+/* review toolbar */
+.review-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-wrap: wrap;
+
+    margin-bottom: 1rem;
+}
+
+/* activity table section[hidden] */
+.activity-table-section[hidden] {
+    display: none;
+}
+
+/* activity table section */
+.activity-table-section + .activity-table-section {
+    margin-top: 0.75rem;
+}
+
+/* activity table section */
+.activity-table-section .panel-header {
+    margin-bottom: 0.75rem;
+}
+
+/* review toolbar */
+.review-toolbar .search {
+    position: relative;
+
+    flex: 1;
+    max-width: 340px;
+}
+
+/* review toolbar */
+.review-toolbar .search i {
+    position: absolute;
+    top: 50%;
+    left: 12px;
+
+    color: var(--mw-muted);
+
+    transform: translateY(-50%);
+}
+
+/* review toolbar */
+.review-toolbar .search input {
+    padding-left: 2.3rem;
+}
+
+/* review toolbar selects */
+.review-toolbar-selects {
+    display: flex;
+    gap: 10px;
+    flex: 1;
+    min-width: 0;
+}
+
+/* review toolbar selects */
+.review-toolbar-selects .form-select {
+    flex: 1;
+    min-width: 0;
+}
+
+/* Row actions */
+
+/* row actions */
+.row-actions {
+    display: flex;
+    gap: 6px;
+}
+
+/* row actions */
+.row-actions button {
+    width: 32px;
+    height: 32px;
+
+    color: var(--mw-text-2);
+
+    background: transparent;
+    border: 0;
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+/* row actions */
+.row-actions button:hover {
+    color: var(--mw-blue);
+    background: var(--mw-foam);
+}
+
+/* row actions */
+.row-actions button.danger:hover {
+    color: var(--mw-red);
+    background: #FEE2E2;
+}
+
+/* row actions */
+.row-actions button.success:hover {
+    color: var(--mw-green);
+    background: #DCFCE7;
+}
+
+/* User */
+
+/* avatar cell */
+.avatar-cell {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* avatar cell */
+.avatar-cell .av {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+
+    width: 34px;
+    height: 34px;
+
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+
+    background: var(--mw-teal);
+    border-radius: 50%;
+}
+
+/* avatar cell */
+.avatar-cell .n {
+    color: var(--mw-navy);
+    font-weight: 700;
+}
+
+/* avatar cell */
+.avatar-cell .e {
+    color: var(--mw-muted);
+    font-size: 0.78rem;
+}
+
+/* Review details */
+
+/* review detail grid */
+.review-detail-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 2.25fr) minmax(0, 0.75fr);
+    gap: 1rem;
+}
+
+/* review detail grid */
+.review-detail-grid > div:last-child {
+    min-width: 0;
+}
+
+/* review detail grid */
+.review-detail-grid > div:first-child {
+    min-width: 0;
+}
+
+/* review actions bar */
+.review-actions-bar {
+    display: flex;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding: 0.8rem;
+    background: #F8FAFC;
+    border: 1px solid var(--mw-border);
+    border-radius: 14px;
+}
+
+/* review actions bar */
+.review-actions-bar .btn {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0.65rem 0.9rem;
+    font-size: 0.92rem;
+    line-height: 1.2;
+}
+
+/* review actions bar */
+.review-actions-bar .btn i {
+    margin-right: 0.45rem;
+}
+
+/* admin sidebar */
+.admin-sidebar{
+    overflow-y:auto;
+    scrollbar-width:none;
+}
+
+/* admin sidebar */
+.admin-sidebar::-webkit-scrollbar{
+    display:none;
+}
+
+/* admin sidebar */
+.admin-sidebar .sidebar-footer{
+    margin-top:auto;
+    flex-shrink:0;
+}
+
+/* admin create modal panel */
+.admin-create-modal-panel {
+    width: min(760px, 100%);
+    max-height: min(90vh, 860px);
+    padding: 1.5rem;
+    overflow: auto;
+    background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
+    border: 1px solid var(--mw-border);
+    border-radius: 24px;
+    box-shadow: 0 24px 70px rgba(10, 37, 64, 0.18);
+}
+
+/* admin create modal head */
+.admin-create-modal-head {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.2rem;
+    padding-bottom: 0.9rem;
+    border-bottom: 1px solid #E8EEF5;
+}
+
+/* admin create modal head */
+.admin-create-modal-head h4 {
+    margin: 0 0 0.25rem;
+    color: var(--mw-navy);
+    font-size: 1.2rem;
+    font-weight: 800;
+}
+
+/* admin create modal head */
+.admin-create-modal-head p {
+    margin: 0;
+    color: var(--mw-muted);
+    font-size: 0.95rem;
+}
+
+/* admin create modal form */
+.admin-create-modal-form .form-label {
+    color: var(--mw-navy);
+    font-weight: 600;
+}
+
+.admin-create-modal-form .form-control,
+/* admin create modal form */
+.admin-create-modal-form .form-select {
+    border-radius: 12px;
+    border-color: #D8E2EC;
+    padding: 0.75rem 0.9rem;
+    background: #fff;
+}
+
+.admin-create-modal-form .form-control:focus,
+/* admin create modal form */
+.admin-create-modal-form .form-select:focus {
+    border-color: var(--mw-teal);
+    box-shadow: 0 0 0 0.2rem rgba(14, 165, 233, 0.16);
+}
+
+/* admin pin map card */
+.admin-pin-map-card {
+    margin-top: 0.6rem;
+    padding: 0.9rem;
+    border: 1px solid #D8E2EC;
+    border-radius: 12px;
+    background: #F8FAFC;
+}
+
+/* admin pin map card */
+.admin-pin-map-card .map-help {
+    margin: 0 0 0.65rem;
+    color: var(--mw-muted);
+    font-size: 0.9rem;
+}
+
+/* admin pin map */
+.admin-pin-map {
+    width: 100%;
+    height: 240px;
+    border-radius: 10px;
+    overflow: hidden;
+    border: 1px solid #D8E2EC;
+}
+
+/* admin pin map */
+.admin-pin-map .leaflet-control-attribution {
+    font-size: 10px;
+}
+
+/* ==========================================================
+   Responsive Styles
+   ========================================================== */
+
+/* small screens */
+@media (max-width: 767px) {
+
+    .admin-tabs {
+        width: 100%;
+        overflow-x: auto;
+        margin-bottom: 1rem;
+    }
+
+    .review-table {
+        width: 100%;
+        table-layout: auto;
+    }
+
+    .review-table th,
+    .review-table td {
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .review-table {
+        width: 100%;
+        table-layout: auto;
+    }
+
+    .review-table th,
+    .review-table td {
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .review-table th,
+    .review-table td {
+        white-space: normal;
+        word-break: break-word;
+    }
+
+    .review-table {
+        width: 100%;
+        table-layout: auto;
+    }
+
+    .admin-tabs button {
+        padding: 6px 14px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+    }
+
+    .review-toolbar {
+        gap: 8px;
+        flex-direction: column;
+        align-items: stretch;
+        margin-bottom: 0.875rem;
+    }
+
+    .review-toolbar .search {
+        max-width: 100%;
+        width: 100%;
+    }
+
+    .review-toolbar .search input {
+        font-size: 16px;
+        padding: 0.65rem 2.2rem 0.65rem;
+        height: 40px;
+    }
+
+    .review-toolbar-selects {
+        width: 100%;
+    }
+
+    .review-toolbar-selects .form-select {
+        font-size: 15px;
+        padding: 0.6rem 1.8rem 0.6rem 0.7rem;
+    }
+
+    .row-actions {
+        gap: 4px;
+    }
+
+    .row-actions button {
+        width: 30px;
+        height: 30px;
+        font-size: 0.85rem;
+    }
+
+    .admin-create-modal-panel {
+        max-width: 100%;
+        min-width: 0;
+        width: 100%;
+    }
+
+    .admin-create-modal-form .form-group {
+        margin-bottom: 0.9rem;
+    }
+
+    .admin-create-modal-form .form-control,
+    .admin-create-modal-form .form-select {
+        font-size: 16px;
+        padding: 0.65rem 0.8rem;
+        border-radius: 10px;
+    }
+
+    .admin-pin-map {
+        height: 200px;
+    }
+
+    .admin-pin-map-card {
+        margin-top: 0.5rem;
+        padding: 0.75rem;
+    }
+
+}
+
+/* small screens */
+@media (max-width: 479px) {
+
+    .admin-tabs {
+        font-size: 0.85rem;
+    }
+
+    .admin-tabs button {
+        padding: 5px 12px;
+    }
+
+    .review-toolbar {
+        gap: 6px;
+    }
+
+    .row-actions {
+        gap: 3px;
+    }
+
+    .row-actions button {
+        width: 28px;
+        height: 28px;
+        font-size: 0.8rem;
+    }
+
+    .admin-create-modal-form .form-label {
+        font-size: 0.9rem;
+    }
+
+    .admin-pin-map {
+        height: 180px;
+    }
+
+}
+
+/* Admin tables/cards responsive helpers */
+.table-responsive{
+    width:100%;
+    overflow-x:auto;
+    -webkit-overflow-scrolling:touch;
+}
+
+/* admin table */
+.admin-table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+/* admin table */
+.admin-table th, .admin-table td{
+    padding:0.6rem 0.75rem;
+    text-align:left;
+}
+
+/* admin card */
+.admin-card img {
+    max-width:100%;
+    height:auto;
+    display:block;
+}

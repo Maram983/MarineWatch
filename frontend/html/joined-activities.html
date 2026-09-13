@@ -1,0 +1,170 @@
+/* MarineWatch - My Activities */
+
+document.addEventListener("mw:ready", () => {
+
+    const activities = {
+        upcoming: JSON.parse(localStorage.getItem("joinedActivities")) || [],
+
+        completed: [
+            {
+                id: "A-090",
+                title: "Jeddah Corniche Cleanup",
+                city: "Jeddah",
+                date: "2026-06-15",
+                hours: 4,
+                status: "completed"
+            },
+            {
+                id: "A-088",
+                title: "KAUST Awareness Workshop",
+                city: "Thuwal",
+                date: "2026-06-02",
+                hours: 3,
+                status: "completed"
+            }
+        ],
+
+        cancelled: [
+            {
+                id: "A-077",
+                title: "Jazan Mangrove Day",
+                city: "Jazan",
+                date: "2026-05-01",
+                hours: 0,
+                status: "cancelled"
+            }
+        ]
+    };
+
+    const badges = {
+        confirmed: '<span class="mw-badge mw-badge-green">Confirmed</span>',
+        completed: '<span class="mw-badge mw-badge-blue">Completed</span>',
+        cancelled: '<span class="mw-badge mw-badge-red">Cancelled</span>'
+    };
+
+    function renderActivities(tab) {
+
+        const list = activities[tab];
+        const grid = document.getElementById("grid");
+
+        if (!list.length) {
+
+            grid.innerHTML = `
+                <div class="mw-empty" style="grid-column:1/-1">
+                    <i class="fa-solid fa-calendar-xmark"></i>
+                    <h4>No activities found</h4>
+                    <p>You don't have any activities in this section.</p>
+                </div>
+            `;
+
+            return;
+        }
+
+        grid.innerHTML = list.map(activity => `
+
+            <div class="activity-card">
+
+                <div class="a-image">
+
+                    <div class="date-chip">
+                        <i class="fa-regular fa-calendar me-1"></i>
+                        ${MW.formatDateString(activity.date || "TBD")}
+                    </div>
+
+                    <div class="status-chip">
+                        ${badges[activity.status]}
+                    </div>
+
+                </div>
+
+                <div class="a-body">
+
+                    <h4>${activity.title}</h4>
+
+                    <div class="a-meta">
+
+                        <span>
+                            <i class="fa-solid fa-location-dot"></i>
+                            ${activity.city}
+                        </span>
+
+                        <span>
+                            <i class="fa-regular fa-clock"></i>
+                            ${activity.hours || 3}h
+                        </span>
+
+                    </div>
+
+                    <hr>
+
+                    <div class="d-flex justify-content-between align-items-center mt-3">
+
+                        <a href="activity-details.html?id=${activity.id}"
+                           class="btn btn-outline-navy">
+                            Details
+                        </a>
+
+                        ${
+                            activity.status === "confirmed"
+                            ? `
+                            <button class="btn btn-danger leave-btn"
+                                    data-id="${activity.id}">
+                                Leave
+                            </button>
+                            `
+                            : ""
+                        }
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        `).join("");
+
+        document.querySelectorAll(".leave-btn").forEach(button => {
+
+            button.addEventListener("click", () => {
+
+                let joined =
+                    JSON.parse(localStorage.getItem("joinedActivities")) || [];
+
+                joined = joined.filter(item => item.id !== button.dataset.id);
+
+                localStorage.setItem(
+                    "joinedActivities",
+                    JSON.stringify(joined)
+                );
+
+                activities.upcoming = joined;
+
+                renderActivities("upcoming");
+
+                mwToast("Activity removed", "success");
+
+            });
+
+        });
+
+    }
+
+    const tabs = document.querySelectorAll("#tabs button");
+
+    tabs.forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            tabs.forEach(tab => tab.classList.remove("active"));
+
+            button.classList.add("active");
+
+            renderActivities(button.dataset.tab);
+
+        });
+
+    });
+
+    renderActivities("upcoming");
+
+});

@@ -1,0 +1,102 @@
+<!-- app sidebar -->
+<aside class="sidebar admin-sidebar" id="appSidebar">
+
+    <!-- Brand -->
+    <div class="brand">
+        <span class="logo">
+            <i class="fa-solid fa-shield-halved"></i>
+        </span>
+
+        <div class="name">
+            MarineWatch
+            <small>Admin Console</small>
+        </div>
+    </div>
+
+    <!-- Sidebar Navigation -->
+    <div class="sidebar-content">
+
+        <!-- Overview -->
+        <div class="nav-section">
+
+            <div class="nav-title">Overview</div>
+
+            <!-- nav bar -->
+            <nav class="nav flex-column">
+
+                <a class="nav-link"
+                   href="admin-dashboard.html"
+                   data-sb="dashboard">
+
+                    <i class="fa-solid fa-gauge-high"></i>
+                    Dashboard
+
+                </a>
+
+            </nav>
+
+        </div>
+
+        <!-- Moderation -->
+        <div class="nav-section">
+
+            <div class="nav-title">Moderation</div>
+
+            <!-- nav bar -->
+            <nav class="nav flex-column">
+
+                <a class="nav-link"
+                   href="review-reports.html"
+                   data-sb="review">
+
+                    <i class="fa-solid fa-clipboard-check"></i>
+
+                    Review reports
+
+                    <!-- sidebar review badge -->
+                    <span class="badge" id="sidebarReviewBadge">0</span>
+
+                </a>
+
+                <a class="nav-link"
+                   href="admin-map.html"
+                   data-sb="map">
+
+                    <i class="fa-solid fa-map-location-dot"></i>
+
+                    Marine map
+
+                </a>
+
+                <a class="nav-link"
+                   href="admin-activities.html"
+                   data-sb="activities">
+
+                    <i class="fa-solid fa-list-check"></i>
+
+                    Manage activities
+
+                </a>
+
+            </nav>
+
+        </div>
+
+    </div>
+
+    <!-- Footer -->
+    <div class="sidebar-footer">
+
+        <a href="admin-login.html"
+           class="nav-link logout-link"
+           onclick="localStorage.removeItem('mw_user'); localStorage.removeItem('mw_token');">
+
+            <i class="fa-solid fa-arrow-right-from-bracket"></i>
+
+            Log out
+
+        </a>
+
+    </div>
+
+</aside>

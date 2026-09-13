@@ -1,0 +1,954 @@
+/* Responsive */
+
+/* ==============================
+   Extra Small (320px - 479px)
+   Mobile phones
+   ============================== */
+
+/* small screens */
+@media (max-width: 479px) {
+
+    /* Layout */
+    .mw-container {
+        padding: 0 16px;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 1.75rem;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+        line-height: 1.3;
+    }
+
+    h3 {
+        font-size: 1.25rem;
+        line-height: 1.3;
+    }
+
+    p {
+        font-size: 0.9rem;
+        line-height: 1.5;
+    }
+
+    /* Hero Section */
+    .hero,
+    .hero-ocean {
+        min-height: 500px;
+    }
+
+    .hero-title-light {
+        font-size: 2rem !important;
+        line-height: 1.15 !important;
+    }
+
+    .eyebrow {
+        font-size: 0.8rem;
+        padding: 6px 12px;
+        margin-bottom: 16px;
+    }
+
+    /* Authentication Forms */
+    .auth-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-visual {
+        display: none;
+    }
+
+    .auth-form {
+        padding: 1.5rem;
+    }
+
+    .auth-card {
+        padding: 1.25rem;
+    }
+
+    /* Forms */
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
+
+    .form-group {
+        margin-bottom: 1rem;
+    }
+
+    .form-group label {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.75rem 1rem;
+        font-size: 0.9rem;
+        min-height: 44px;
+        border-radius: 10px;
+    }
+
+    .btn-lg {
+        padding: 0.875rem 1.25rem;
+    }
+
+    /* Cards */
+    .stat-card {
+        padding: 0.875rem;
+    }
+
+    .stat-card .value {
+        font-size: 1.5rem;
+    }
+
+    .stat-card .label {
+        font-size: 0.8rem;
+    }
+
+    /* Grids */
+    .role-picker {
+        grid-template-columns: 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.875rem;
+    }
+
+    .dash-grid,
+    .dash-grid-3 {
+        grid-template-columns: 1fr;
+        gap: 0.875rem;
+    }
+
+    /* Dashboard */
+    .dash-hero {
+        padding: 1.25rem;
+    }
+
+    .dash-hero h2 {
+        font-size: 1.25rem;
+    }
+
+    .page-title {
+        font-size: 1.5rem;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        width: 100%;
+        left: 0;
+        right: auto;
+        inset: auto;
+        transform: translateX(-100%);
+        z-index: 1200;
+    }
+
+    .sidebar.open {
+        left: 0 !important;
+        transform: none !important;
+        right: auto !important;
+        inset: auto !important;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .topbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .topbar .menu-toggle {
+        display: inline-flex !important;
+    }
+
+    .topbar .search-box {
+        display: none !important;
+    }
+
+    .page-content {
+        padding: 0.875rem;
+    }
+
+    /* Tables — keep the real table design (same columns/rows as desktop)
+       and let it scroll horizontally instead of collapsing into stacked
+       "card" rows. min-width on the table keeps columns readable; the
+       .table-responsive wrapper (overflow-x:auto, set in style.css /
+       dashboard.css) handles the horizontal swipe. */
+    .mw-table {
+        font-size: 0.8rem;
+        min-width: 640px;
+    }
+
+    .mw-table th,
+    .mw-table td {
+        padding: 8px 10px;
+        white-space: nowrap;
+    }
+
+    .mw-table td:first-child,
+    .mw-table th:first-child {
+        white-space: normal;
+    }
+
+    /* Tables — convert to stacked "cards" on phones (was previously only
+       happening at 480px+, but most phones report a CSS width BELOW 480px,
+       so they fell through and showed the raw cramped table instead). */
+    .mw-table thead {
+        display: none;
+    }
+
+    .mw-table,
+    .mw-table tbody,
+    .mw-table tr,
+    .mw-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .mw-table tr {
+        margin-bottom: 12px;
+        background: #fff;
+        border: 1px solid var(--mw-border);
+        border-radius: 12px;
+    }
+
+    .mw-table td {
+        padding: 8px 14px;
+        border-top: 0;
+    }
+
+    .mw-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 2px;
+        color: var(--mw-muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    /* Tables — convert to stacked "cards" on phones (was previously only
+       happening at 480px+, but most phones report a CSS width BELOW 480px,
+       so they fell through and showed the raw cramped table instead). */
+    .mw-table thead {
+        display: none;
+    }
+
+    .mw-table,
+    .mw-table tbody,
+    .mw-table tr,
+    .mw-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .mw-table tr {
+        margin-bottom: 12px;
+        background: #fff;
+        border: 1px solid var(--mw-border);
+        border-radius: 12px;
+    }
+
+    .mw-table td {
+        padding: 8px 14px;
+        border-top: 0;
+    }
+
+    .mw-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 2px;
+        color: var(--mw-muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    /* Tables — convert to stacked "cards" on phones (was previously only
+       happening at 480px+, but most phones report a CSS width BELOW 480px,
+       so they fell through and showed the raw cramped table instead). */
+    .mw-table thead {
+        display: none;
+    }
+
+    .mw-table,
+    .mw-table tbody,
+    .mw-table tr,
+    .mw-table td {
+        display: block;
+        width: 100%;
+    }
+
+    .mw-table tr {
+        margin-bottom: 12px;
+        background: #fff;
+        border: 1px solid var(--mw-border);
+        border-radius: 12px;
+    }
+
+    .mw-table td {
+        padding: 8px 14px;
+        border-top: 0;
+    }
+
+    .mw-table td::before {
+        content: attr(data-label);
+        display: block;
+        margin-bottom: 2px;
+        color: var(--mw-muted);
+        font-size: 0.7rem;
+        font-weight: 700;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+    }
+
+    .table-responsive {
+        font-size: 0.8rem;
+        border-radius: 12px;
+        border: 1px solid var(--mw-border);
+    }
+
+    /* Maps */
+    .map-preview {
+        min-height: 250px;
+    }
+
+    #marineMap,
+    #dashMap {
+        min-height: 280px;
+    }
+
+    /* Report Form */
+    .report-form-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    /* Report details — stack main content and Location panel instead of
+       squeezing them into 2.25fr/0.75fr columns (was missing at this
+       breakpoint, unlike tablet, which is why the map got crushed). */
+    .detail-grid,
+    .profile-grid,
+    .review-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .severity-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.75rem;
+    }
+
+    /* Activity Cards */
+    .activity-card {
+        margin-bottom: 1rem;
+    }
+
+    .gallery {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .gallery .g-main,
+    .report-gallery .g-main,
+    .report-gallery .g-thumb {
+        min-height: 110px !important;
+        max-height: 110px !important;
+        height: 110px !important;
+    }
+
+    /* Modal/Dialogs */
+    .modal-body {
+        padding: 1.25rem;
+    }
+
+    /* Search box */
+    .search-box input {
+        font-size: 0.9rem;
+    }
+
+}
+
+/* ==============================
+   Small (480px - 767px)
+   Small mobile & phablets
+   ============================== */
+
+/* small screens */
+@media (min-width: 480px) and (max-width: 767px) {
+
+    /* Layout */
+    .mw-container {
+        padding: 0 20px;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    h2 {
+        font-size: 1.75rem;
+        line-height: 1.3;
+    }
+
+    h3 {
+        font-size: 1.35rem;
+        line-height: 1.3;
+    }
+
+    /* Hero Section */
+    .hero,
+    .hero-ocean {
+        min-height: 550px;
+    }
+
+    .hero-title-light {
+        font-size: 2.25rem !important;
+        line-height: 1.2 !important;
+    }
+
+    /* Forms */
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
+
+    /* Buttons */
+    .btn {
+        min-height: 44px;
+        padding: 0.75rem 1.125rem;
+    }
+
+    /* Cards */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 1rem;
+    }
+
+    /* Dashboard */
+    .dash-hero {
+        padding: 1.5rem;
+    }
+
+    .severity-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Page content */
+    .page-content {
+        padding: 1rem;
+    }
+
+    /* Sidebar */
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: auto;
+        inset: auto;
+        transform: translateX(-100%);
+        z-index: 1200;
+        width: 260px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        transition: transform 0.25s ease-out;
+    }
+
+    .sidebar.open {
+        left: 0 !important;
+        transform: none !important;
+        right: auto !important;
+        inset: auto !important;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .topbar .menu-toggle {
+        display: inline-flex !important;
+    }
+
+    .topbar .search-box {
+        display: none !important;
+    }
+
+    /* Tables — same real table design as desktop, horizontal scroll
+       instead of stacked cards. */
+    .mw-table {
+        font-size: 0.85rem;
+        min-width: 640px;
+    }
+
+    .mw-table th,
+    .mw-table td {
+        padding: 9px 12px;
+        white-space: nowrap;
+    }
+
+    .mw-table td:first-child,
+    .mw-table th:first-child {
+        white-space: normal;
+    }
+
+    .table-responsive {
+        border-radius: 12px;
+        border: 1px solid var(--mw-border);
+    }
+
+    /* Report Form */
+    .report-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Report details — stack main content and Location panel */
+    .detail-grid,
+    .profile-grid,
+    .review-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .gallery .g-main {
+        min-height: 200px;
+    }
+
+    /* Maps */
+    .report-map {
+        height: 260px;
+    }
+
+    #marineMap,
+    #dashMap {
+        min-height: 300px;
+    }
+
+}
+
+/* ==============================
+   Medium (768px - 991px)
+   Tablets
+   ============================== */
+
+/* small screens */
+@media (min-width: 768px) and (max-width: 991px) {
+
+    /* Layout */
+    .mw-container {
+        padding: 0 24px;
+    }
+
+    /* Typography */
+    h1 {
+        font-size: 2.25rem;
+    }
+
+    h2 {
+        font-size: 1.875rem;
+    }
+
+    /* Hero Section */
+    .hero,
+    .hero-ocean {
+        min-height: 600px;
+    }
+
+    .hero-title-light {
+        font-size: 2.5rem !important;
+    }
+
+    /* Forms */
+    input,
+    textarea,
+    select {
+        font-size: 16px !important;
+    }
+
+    .auth-wrap {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-visual {
+        display: flex;
+        min-height: auto;
+        padding: 2rem;
+    }
+
+    .auth-visual .hero-copy h2 {
+        font-size: 1.75rem;
+    }
+
+    /* Sidebar */
+    .app-shell {
+        grid-template-columns: 1fr;
+    }
+
+    .main {
+        margin-left: 0;
+    }
+
+    .sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: auto;
+        inset: auto;
+        transform: translateX(-100%);
+        z-index: 1200;
+        width: 260px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.25);
+        transition: transform 0.25s ease-out;
+    }
+
+    .sidebar.open {
+        left: 0 !important;
+        transform: none !important;
+        right: auto !important;
+        inset: auto !important;
+    }
+
+    .sidebar-backdrop {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 1100;
+        background: rgba(0, 0, 0, 0.4);
+    }
+
+    .sidebar-backdrop.show {
+        display: block;
+    }
+
+    .topbar .menu-toggle {
+        display: inline-flex !important;
+    }
+
+    .topbar .search-box {
+        display: none !important;
+    }
+
+    .page-content {
+        padding: 1.5rem;
+    }
+
+    /* Dashboard */
+    .dash-hero {
+        padding: 2rem;
+    }
+
+    .dash-hero h2 {
+        font-size: 1.5rem;
+    }
+
+    /* Grids */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dash-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .dash-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Report Form */
+    .report-form-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Detail Grid */
+    .detail-grid,
+    .profile-grid,
+    .review-detail-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .detail-summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery .g-main {
+        grid-row: span 1;
+        min-height: 220px;
+    }
+
+    /* Tables */
+    .mw-table {
+        font-size: 0.9rem;
+    }
+
+    /* Severity Grid */
+    .severity-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Maps */
+    .report-map {
+        height: 280px;
+    }
+
+    #marineMap,
+    #dashMap {
+        min-height: 350px;
+    }
+
+    /* Card layouts */
+    .detail-card {
+        padding: 1rem;
+    }
+
+    .detail-summary-top {
+        flex-direction: column;
+    }
+
+}
+
+/* ==============================
+   Large (992px - 1199px)
+   Laptops
+   ============================== */
+
+/* small screens */
+@media (min-width: 992px) and (max-width: 1199px) {
+
+    /* Layout */
+    .mw-container {
+        padding: 0 24px;
+    }
+
+    /* Sidebar */
+    .app-shell {
+        grid-template-columns: 220px 1fr;
+    }
+
+    /* Dashboard Grids */
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dash-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .dash-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Report Form */
+    .report-form-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    /* Detail Grid */
+    .detail-grid,
+    .profile-grid,
+    .review-detail-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .detail-summary-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    /* Gallery */
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Severity Grid */
+    .severity-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    /* Hero */
+    .hero,
+    .hero-ocean {
+        min-height: 700px;
+    }
+
+    .hero-title-light {
+        font-size: 3rem !important;
+    }
+
+    /* Forms */
+    .auth-wrap {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .auth-visual {
+        display: flex;
+    }
+
+}
+
+/* ==============================
+   Extra Large (1200px+)
+   Desktop and beyond
+   ============================== */
+
+/* responsive */
+@media (min-width: 1200px) {
+
+    .app-shell {
+        grid-template-columns: 260px 1fr;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .dash-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .dash-grid-3 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .report-form-grid {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .detail-grid,
+    .profile-grid,
+    .review-detail-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .detail-summary-grid {
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .gallery .g-main {
+        grid-column: span 2;
+        grid-row: span 2;
+        min-height: 400px;
+    }
+
+    .gallery.report-gallery .g-main,
+    .gallery.report-gallery .g-thumb {
+        grid-column: auto !important;
+        grid-row: auto !important;
+        min-height: 110px !important;
+        max-height: 110px !important;
+        height: 110px !important;
+    }
+
+    .severity-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .auth-wrap {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .auth-visual {
+        display: flex;
+    }
+
+}
+
+/* ==============================
+   Landscape Mode
+   ============================== */
+
+/* responsive */
+@media (max-height: 600px) and (orientation: landscape) {
+
+    .hero,
+    .hero-ocean {
+        min-height: 400px;
+    }
+
+    .hero-title-light {
+        font-size: 2rem !important;
+    }
+
+    .dash-hero {
+        padding: 1rem;
+    }
+
+    .page-content {
+        padding: 0.75rem;
+    }
+
+}
+
+/* ==============================
+   Touch Device Adjustments
+   ============================== */
+
+/* responsive */
+@media (hover: none) and (pointer: coarse) {
+
+    /* Increase button/link touch target sizes */
+    .btn {
+        min-height: 48px;
+        min-width: 48px;
+    }
+
+    a {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Remove hover effects */
+    .btn:hover,
+    a:hover {
+        transform: none;
+    }
+
+}
+
+/* ==============================
+   Print Styles
+   ============================== */
+
+/* responsive */
+@media print {
+
+    .sidebar,
+    .topbar,
+    .sidebar-backdrop,
+    .menu-toggle,
+    .btn-primary,
+    .btn-success,
+    .btn-teal {
+        display: none !important;
+    }
+
+    .app-shell {
+        grid-template-columns: 1fr;
+    }
+
+    body {
+        background: white;
+    }
+
+}

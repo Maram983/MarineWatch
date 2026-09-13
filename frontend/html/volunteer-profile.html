@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Volunteer profile · MarineWatch</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet"><link href="../css/dashboard.css" rel="stylesheet"><link href="../css/profile.css" rel="stylesheet"><link href="../css/responsive.css" rel="stylesheet">
+</head>
+<body data-sb="profile">
+  <div class="app-shell">
+    <div data-include="components/sidebar-volunteer.html"></div>
+    <!-- main content -->
+    <main class="main">
+      <div class="topbar"><button class="menu-toggle"><i class="fa-solid fa-bars"></i></button><h1 class="page-title">My profile</h1></div>
+      <div class="page-content">
+        <div class="profile-header">
+          <!-- profile avatar -->
+          <div class="profile-avatar" id="profileAvatar">U</div>
+          <div class="info">
+            <span class="role"><i class="fa-solid fa-hands-holding-circle me-1"></i> Volunteer</span>
+            <!-- profile name -->
+            <h1 id="profileName">—</h1>
+            <p>
+              <i class="fa-solid fa-envelope me-2"></i>
+              <!-- profile email -->
+              <span id="profileEmail">—</span>
+              &nbsp;
+              <i class="fa-solid fa-location-dot me-2"></i>
+              <!-- profile location -->
+              <span id="profileLocation">—</span>
+            </p>
+          </div>
+          <div class="actions">
+            <a href="volunteer-edit-profile.html" class="btn" style="background:#fff;color:#0A2540;font-weight:700"><i class="fa-solid fa-pen me-2"></i>Edit</a>
+          </div>
+        </div>
+
+        <div class="profile-content-wrap">
+          <!-- section -->
+          <section class="profile-card profile-card--wide">
+            <div class="profile-card-header">
+              <h3>Personal information</h3>
+            </div>
+            <div class="profile-info-list">
+              <div class="profile-info-item">
+                <div class="profile-info-icon"><i class="fa-solid fa-user"></i></div>
+                <div class="profile-info-content">
+                  <div class="profile-info-label">Full name</div>
+                  <!-- profile full name -->
+                  <div class="profile-info-value" id="profileFullName">—</div>
+                </div>
+              </div>
+
+              <div class="profile-info-item">
+                <div class="profile-info-icon"><i class="fa-solid fa-envelope"></i></div>
+                <div class="profile-info-content">
+                  <div class="profile-info-label">Email</div>
+                  <!-- profile info email -->
+                  <div class="profile-info-value" id="profileInfoEmail">—</div>
+                </div>
+              </div>
+
+              <div class="profile-info-item">
+                <div class="profile-info-icon"><i class="fa-solid fa-phone"></i></div>
+                <div class="profile-info-content">
+                  <div class="profile-info-label">Phone</div>
+                  <!-- profile phone -->
+                  <div class="profile-info-value" id="profilePhone">—</div>
+                </div>
+              </div>
+
+              <div class="profile-info-item">
+                <div class="profile-info-icon"><i class="fa-solid fa-location-dot"></i></div>
+                <div class="profile-info-content">
+                  <div class="profile-info-label">City</div>
+                  <!-- profile city -->
+                  <div class="profile-info-value" id="profileCity">—</div>
+                </div>
+              </div>
+
+              <div class="profile-info-item">
+                <div class="profile-info-icon"><i class="fa-solid fa-calendar-days"></i></div>
+                <div class="profile-info-content">
+                  <div class="profile-info-label">Member since</div>
+                  <!-- profile member since -->
+                  <div class="profile-info-value" id="profileMemberSince">—</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/profile.js"></script>
+</body>
+</html>

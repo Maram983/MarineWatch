@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My reports · MarineWatch</title>
+  <link rel="icon" href="favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+  <link href="../css/style.css" rel="stylesheet">
+  <link href="../css/dashboard.css" rel="stylesheet">
+  <link href="../css/reports.css" rel="stylesheet">
+  <link href="../css/responsive.css" rel="stylesheet">
+</head>
+<body data-sb="my-reports">
+  <div class="app-shell">
+    <div data-include="components/sidebar-auto.html"></div>
+    <!-- main content -->
+    <main class="main">
+      <div class="topbar">
+        <button class="menu-toggle"><i class="fa-solid fa-bars"></i></button>
+        <h1 class="page-title">My reports</h1>
+        <div class="top-actions">
+          <a href="submit-report.html" class="btn btn-primary"><i class="fa-solid fa-plus me-1"></i>New report</a>
+        </div>
+      </div>
+
+<div class="page-content">
+
+    <div class="stats-grid" style="grid-template-columns:repeat(4,1fr)">
+
+        <div class="stat-card">
+            <div class="icon blue">
+                <i class="fa-solid fa-file-lines"></i>
+            </div>
+            <div>
+                <div class="label">Total</div>
+                <!-- total reports -->
+                <div class="value" id="totalReports">0</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon green">
+                <i class="fa-solid fa-check"></i>
+            </div>
+            <div>
+                <div class="label">Approved</div>
+                <!-- approved reports -->
+                <div class="value" id="approvedReports">0</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon amber">
+                <i class="fa-solid fa-clock"></i>
+            </div>
+            <div>
+                <div class="label">Pending</div>
+                <!-- pending reports -->
+                <div class="value" id="pendingReports">0</div>
+            </div>
+        </div>
+
+        <div class="stat-card">
+            <div class="icon red">
+                <i class="fa-solid fa-xmark"></i>
+            </div>
+            <div>
+                <div class="label">Rejected</div>
+                <!-- rejected reports -->
+                <div class="value" id="rejectedReports">0</div>
+            </div>
+        </div>
+
+    </div>
+
+        <div class="panel">
+          <div class="reports-toolbar">
+            <div class="search"><i class="fa-solid fa-search"></i><input id="q" class="form-control" placeholder="Search reports…"></div>
+            <div class="reports-toolbar-selects">
+              <!-- f type -->
+              <select id="fType" class="form-select"><option value="">All types</option><option>Plastic</option><option>Oil</option><option>Chemical</option><option>Fishing gear</option><option>Debris</option><option>Bleaching</option></select>
+              <!-- f status -->
+              <select id="fStatus" class="form-select"><option value="">All statuses</option><option value="approved">Approved</option><option value="pending">Pending</option><option value="rejected">Rejected</option><option value="investigating">Investigating</option></select>
+              <!-- f sort -->
+              <select id="fSort" class="form-select"><option value="date">Newest first</option><option value="dateAsc">Oldest first</option><option value="severity">By severity</option></select>
+            </div>
+          </div>
+
+          <!-- table view -->
+          <div id="tableView" class="table-responsive">
+            <!-- table -->
+            <table class="mw-table">
+              <thead><tr><th>Title</th><th>Type</th><th>Severity</th><th>Status</th><th>Date</th><th>Actions</th></tr></thead>
+              <!-- table rows -->
+              <tbody id="tableRows"></tbody>
+            </table>
+          </div>
+
+          <!-- pagination -->
+          <div class="pagination" id="pagination"></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/dashboard.js"></script>
+  <script src="../js/my-reports.js"></script>
+</body>
+</html>

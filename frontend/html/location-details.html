@@ -1,0 +1,376 @@
+<div class="page-content">
+
+    <!-- ==========================================
+         Location Header
+    =========================================== -->
+
+    <!-- section -->
+    <section class="location-header panel">
+
+        <div class="location-header-left">
+
+            <span class="mw-badge mw-badge-blue">
+
+                <i class="fa-solid fa-water me-2"></i>
+
+                Marine Monitoring
+
+            </span>
+
+            <!-- l name -->
+            <h1 id="lName">
+
+                Jeddah Corniche
+
+            </h1>
+
+            <!-- l desc -->
+            <p id="lDesc">
+
+                MarineWatch continuously evaluates this marine location using approved reports submitted by certified divers and volunteers.
+
+            </p>
+
+            <div class="location-meta">
+
+                <span>
+
+                    <i class="fa-solid fa-location-dot"></i>
+
+                    <!-- l region -->
+                    <span id="lRegion">
+
+                        Jeddah
+
+                    </span>
+
+                </span>
+
+                <span>
+
+                    <i class="fa-regular fa-clock"></i>
+
+                    Updated
+
+                    <!-- l updated -->
+                    <span id="lUpdated">
+
+                        Today
+
+                    </span>
+
+                </span>
+
+            </div>
+
+        </div>
+
+
+
+        <div class="location-health">
+
+            <div class="health-title">
+
+                Marine Health
+
+            </div>
+
+            <div class="health-score">
+
+                <!-- l score -->
+                <span id="lScore">
+
+                    82
+
+                </span>
+
+                <small>/100</small>
+
+            </div>
+
+            <div class="health-bar">
+
+                <div
+                    id="healthFill"
+                    class="health-fill"
+                    style="width:82%">
+
+                </div>
+
+            </div>
+
+            <div class="health-status">
+
+                Good Condition
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         Overview Cards
+    =========================================== -->
+
+    <!-- section -->
+    <section class="location-summary">
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-shield-halved"></i>
+
+            <span>Status</span>
+
+            <!-- l status -->
+            <strong id="lStatus">
+
+                Monitoring
+
+            </strong>
+
+        </div>
+
+
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-file-circle-check"></i>
+
+            <span>Approved Reports</span>
+
+            <!-- l reports count -->
+            <strong id="lReportsCount">
+
+                6
+
+            </strong>
+
+        </div>
+
+
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-seedling"></i>
+
+            <span>Cleanup</span>
+
+            <!-- l cleanup -->
+            <strong id="lCleanup">
+
+                Scheduled
+
+            </strong>
+
+        </div>
+
+
+
+        <div class="summary-card">
+
+            <i class="fa-solid fa-chart-line"></i>
+
+            <span>Trend</span>
+
+            <strong>
+
+                Improving
+
+            </strong>
+
+        </div>
+
+    </section>
+
+
+
+    <!-- ==========================================
+         Main Layout
+    =========================================== -->
+
+    <div class="location-layout">
+
+        <!-- LEFT -->
+
+        <div class="location-main">
+
+
+
+            <!-- Marine Overview -->
+
+            <div class="panel">
+
+                <h3>
+
+                    Marine Overview
+
+                </h3>
+
+                <p class="text-muted-2">
+
+                    This area is continuously monitored using verified environmental reports.
+                    MarineWatch evaluates pollution severity, cleanup progress,
+                    and overall marine ecosystem health.
+
+                </p>
+
+            </div>
+
+
+
+            <!-- Interactive Map -->
+
+            <div class="panel mt-3">
+
+                <div class="panel-header">
+
+                    <h3>
+
+                        Interactive Map
+
+                    </h3>
+
+                </div>
+
+                <!-- detail map -->
+                <div id="detailMap" class="report-map"></div>
+
+            </div>
+
+
+
+            <!-- Marine Conditions -->
+
+            <div class="panel mt-3">
+
+                <div class="panel-header">
+
+                    <h3>
+
+                        Current Marine Conditions
+
+                    </h3>
+
+                </div>
+
+                <!-- l conditions -->
+                <div id="lConditions" class="conditions-grid">
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Pollution -->
+
+            <div class="panel mt-3">
+
+                <div class="panel-header">
+
+                    <h3>
+
+                        Detected Pollution
+
+                    </h3>
+
+                </div>
+
+                <div
+                    id="lBadges"
+                    class="d-flex flex-wrap gap-2 mt-3">
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+
+        <!-- RIGHT -->
+
+        <!-- sidebar -->
+        <aside class="location-sidebar">
+
+
+
+            <!-- Recommendations -->
+
+            <div class="panel">
+
+                <div class="panel-header">
+
+                    <h3>
+
+                        Recommended Actions
+
+                    </h3>
+
+                </div>
+
+                <!-- l recs -->
+                <ul id="lRecs" class="recommend-list">
+
+                </ul>
+
+            </div>
+
+
+
+            <!-- Cleanup Timeline -->
+
+            <div class="panel mt-3">
+
+                <div class="panel-header">
+
+                    <h3>
+
+                        Cleanup Timeline
+
+                    </h3>
+
+                </div>
+
+                <!-- timeline -->
+                <div id="timeline">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+
+
+            <!-- Environmental History -->
+
+            <div class="panel mt-3">
+
+                <div class="panel-header">
+
+                    <h3>
+
+                        Environmental History
+
+                    </h3>
+
+                </div>
+
+                <!-- l reports -->
+                <div id="lReports">
+
+                    <!-- JS -->
+
+                </div>
+
+            </div>
+
+        </aside>
+
+    </div>
+
+</div>

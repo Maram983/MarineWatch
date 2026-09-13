@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Activity Details · MarineWatch</title>
+
+<link rel="icon" href="favicon.ico">
+
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" rel="stylesheet">
+
+<link href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" rel="stylesheet">
+
+<link href="../css/style.css" rel="stylesheet">
+<link href="../css/dashboard.css" rel="stylesheet">
+<link href="../css/activities.css" rel="stylesheet">
+<link href="../css/reports.css" rel="stylesheet">
+<link href="../css/responsive.css" rel="stylesheet">
+
+</head>
+
+<body data-sb="activities">
+
+<div class="app-shell">
+
+<div data-include="components/sidebar-auto.html"></div>
+
+<!-- main content -->
+<main class="main">
+
+<div class="topbar">
+
+<button class="menu-toggle">
+<i class="fa-solid fa-bars"></i>
+</button>
+
+<h1 class="page-title">
+Activity Details
+</h1>
+
+<div class="top-actions">
+
+<a href="activities.html" class="btn btn-ghost" aria-label="Back to activities">
+
+<i class="fa-solid fa-arrow-left"></i>
+
+</a>
+
+</div>
+
+</div>
+
+<div class="page-content">
+
+<div class="activity-hero">
+
+<span
+class="mw-badge"
+style="background:rgba(255,255,255,.2);color:#fff"
+id="aType">
+
+Cleanup
+
+</span>
+
+<!-- a title -->
+<h1 id="aTitle">
+
+Loading...
+
+</h1>
+
+<div class="a-meta">
+
+<span>
+<i class="fa-regular fa-calendar"></i>
+<!-- a date -->
+<span id="aDate"></span>
+</span>
+
+<span>
+<i class="fa-regular fa-clock"></i>
+<!-- a time -->
+<span id="aTime"></span>
+</span>
+
+<span>
+<i class="fa-solid fa-location-dot"></i>
+<!-- a city -->
+<span id="aCity"></span>
+</span>
+
+<span>
+<i class="fa-solid fa-users"></i>
+<!-- a slots -->
+<span id="aSlots"></span>
+</span>
+
+</div>
+
+</div>
+
+<div class="activity-detail-grid">
+
+<div>
+
+<div class="panel mb-3">
+
+<h3>About this Activity</h3>
+
+<!-- a desc -->
+<p id="aDesc" class="text-muted-2"></p>
+
+<h5 class="mt-3">
+What to Bring
+</h5>
+
+<ul class="text-muted-2">
+
+<li>Water bottle</li>
+
+<li>Sunscreen</li>
+
+<li>Closed-toe water shoes</li>
+
+<li>Hat and light clothing</li>
+
+</ul>
+
+<h5 class="mt-3">
+Meeting Point
+</h5>
+
+<!-- a meeting point -->
+<p class="text-muted-2 mb-2" id="aMeetingPoint">Loading meeting point...</p>
+
+<div
+id="aMap"
+class="report-map">
+</div>
+
+</div>
+
+</div>
+
+<div>
+
+<div class="panel mb-3">
+
+<h3>
+Join this Activity
+</h3>
+
+<div class="d-flex justify-content-between mt-2">
+
+<span class="text-muted-2">
+Availability
+</span>
+
+<!-- a avail -->
+<strong id="aAvail"></strong>
+
+</div>
+
+<div class="progress-bar-wrap mt-2">
+
+<div
+class="fill"
+id="aFill">
+</div>
+
+</div>
+
+<button
+id="joinBtn"
+class="btn btn-primary btn-block btn-lg mt-3">
+
+<i class="fa-solid fa-hands-holding-circle me-2"></i>
+
+Join Now
+
+</button>
+
+</div>
+
+<div class="panel">
+
+<h3>Organizer</h3>
+
+<div class="d-flex align-items-center gap-3 mt-2">
+
+<div
+class="avatar"
+style="width:44px;height:44px;border-radius:50%;background:var(--mw-navy);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;">
+
+MW
+
+</div>
+
+<div>
+
+<strong>
+MarineWatch Team
+</strong>
+
+<br>
+
+<small class="text-muted-2">
+Verified Organization
+</small>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</main>
+
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script src="../js/main.js"></script>
+<script src="../js/activities.js"></script>
+
+<script>
+
+document.addEventListener("mw:ready", async () => {
+    const id = new URLSearchParams(location.search).get("id");
+    const joinBtn = document.getElementById("joinBtn");
+    const user = JSON.parse(localStorage.getItem("mw_user") || "{}") || {};
+    const token = localStorage.getItem("mw_token");
+
+    function setField(name, value) {
+        const el = document.getElementById(name);
+        if (el) {
+            el.textContent = value || "-";
+        }
+    }
+
+    function setHtmlField(name, value) {
+        const el = document.getElementById(name);
+        if (el) {
+            el.innerHTML = value || "-";
+        }
+    }
+
+    function escapeHtml(text) {
+        if (text === null || text === undefined) {
+            return "";
+        }
+        return String(text)
+            .replace(/&/g, "&amp;")
+            .replace(/</g, "&lt;")
+            .replace(/>/g, "&gt;")
+            .replace(/\"/g, "&quot;")
+            .replace(/'/g, "&#039;");
+    }
+
+    function setProgress(filled, slots) {
+        const percentage = slots > 0 ? Math.min(100, Math.round((filled / slots) * 100)) : 0;
+        const fill = document.getElementById("aFill");
+        if (fill) {
+            fill.style.width = `${percentage}%`;
+        }
+    }
+
+    function updateJoinButton(state) {
+        if (!joinBtn) return;
+        joinBtn.disabled = state.disabled;
+        joinBtn.classList.toggle("btn-primary", !state.disabled);
+        joinBtn.classList.toggle("btn-success", state.joined);
+        joinBtn.classList.toggle("btn-navy", state.disabled && !state.joined);
+        joinBtn.innerHTML = state.label;
+    }
+
+    if (!id) {
+        setField("aTitle", "Activity not found");
+        setField("aDesc", "Unable to load this activity.");
+        updateJoinButton({ disabled: true, joined: false, label: "Unavailable" });
+        return;
+    }
+
+    let activity = null;
+    let alreadyJoined = false;
+
+    try {
+        const response = await fetch(window.apiUrl(`/api/activities/${encodeURIComponent(id)}`));
+        const data = await response.json();
+        if (!response.ok) {
+            throw new Error(data.message || "Could not load activity.");
+        }
+        activity = data;
+    } catch (error) {
+        console.error(error);
+        mwToast(error.message || "Could not load activity details.", "error");
+    }
+
+    if (!activity) {
+        setField("aTitle", "Activity not available");
+        setField("aDesc", "Please try again later.");
+        updateJoinButton({ disabled: true, joined: false, label: "Unavailable" });
+        return;
+    }
+
+    let filled = Number(activity.filled || 0);
+    let slots = Number(activity.slots || 0);
+    let availableSpots = Math.max(0, Number(activity.available_spots ?? activity.availableSpots ?? Math.max(slots - filled, 0)));
+
+    setField("aType", activity.type || activity.activity_type || "Cleanup");
+    setField("aTitle", activity.title || "Activity details");
+    setField("aDate", MW.formatDateString(activity.activity_date || activity.date || "TBD"));
+    setField("aTime", activity.start_time || activity.activity_time || activity.time || "TBD");
+    setField("aCity", activity.city || activity.location || activity.meeting_point || "Unknown");
+    setField("aMeetingPoint", activity.location || activity.city || activity.meeting_point || "Unknown");
+    setField("aSlots", `${filled}/${slots}`);
+    const descriptionText = activity.description || activity.desc || "No description available.";
+    const linkedReportText = activity.approval_source === "report" && (activity.report_title || activity.title)
+        ? `<div class="mt-2"><strong>Linked report:</strong> ${escapeHtml(activity.report_title || activity.title)}</div>`
+        : "";
+    setHtmlField("aDesc", `${escapeHtml(descriptionText)}${linkedReportText}`);
+    setField("aAvail", `${availableSpots} spots left`);
+    setProgress(filled, slots);
+
+    const coords = [
+        Number(activity.latitude || activity.lat || 23.8859),
+        Number(activity.longitude || activity.lng || 45.0792)
+    ];
+
+    const map = L.map("aMap", {
+        scrollWheelZoom: false
+    }).setView(coords, 11);
+
+    L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+        attribution: "&copy; OpenStreetMap contributors"
+    }).addTo(map);
+
+    L.marker(coords).addTo(map).bindPopup(activity.title || "Activity location").openPopup();
+    setTimeout(() => map.invalidateSize(), 200);
+
+    if (token && ["diver", "volunteer"].includes(String(user.role || "").toLowerCase())) {
+        try {
+            const joinedResponse = await fetch(window.apiUrl("/api/activities/joined"), {
+                headers: { Authorization: `Bearer ${token}` }
+            });
+            const joinedData = await joinedResponse.json();
+            if (joinedResponse.ok && Array.isArray(joinedData)) {
+                alreadyJoined = joinedData.some((item) => String(item.id || item.activity_id || item.id) === String(activity.id));
+            }
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
+    const isFull = availableSpots <= 0;
+    const activityDate = activity.activity_date ? new Date(activity.activity_date) : null;
+    const isExpired = activityDate ? activityDate < new Date() : false;
+    const statusClosed = (activity.status || '').toLowerCase() === 'closed';
+    const isAllowedRole = token && ["diver", "volunteer"].includes(String(user.role || '').toLowerCase());
+    const canJoin = isAllowedRole && !alreadyJoined && !isFull && !isExpired && !statusClosed;
+
+    if (alreadyJoined) {
+        updateJoinButton({ disabled: true, joined: true, label: '<i class="fa-solid fa-check me-2"></i>Joined' });
+    } else if (!token) {
+        updateJoinButton({ disabled: true, joined: false, label: "Login to join" });
+    } else if (!isAllowedRole) {
+        updateJoinButton({ disabled: true, joined: false, label: "Login to join" });
+    } else if (isFull) {
+        updateJoinButton({ disabled: true, joined: false, label: "Full" });
+    } else if (isExpired) {
+        updateJoinButton({ disabled: true, joined: false, label: "Activity ended" });
+    } else if (statusClosed) {
+        updateJoinButton({ disabled: true, joined: false, label: "Activity closed" });
+    } else {
+        updateJoinButton({ disabled: false, joined: false, label: '<i class="fa-solid fa-hands-holding-circle me-2"></i>Join Now' });
+    }
+
+    if (joinBtn) {
+        joinBtn.addEventListener("click", async () => {
+            if (!canJoin) return;
+            try {
+                const response = await fetch(window.apiUrl(`/api/activities/${encodeURIComponent(activity.id)}/join`), {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`
+                    }
+                });
+                const data = await response.json();
+                if (!response.ok) {
+                    throw new Error(data.message || "Could not join activity.");
+                }
+                mwToast("Successfully joined the activity.", "success");
+                updateJoinButton({ disabled: true, joined: true, label: '<i class="fa-solid fa-check me-2"></i>Joined' });
+                filled += 1;
+                availableSpots = Math.max(0, availableSpots - 1);
+                setField("aSlots", `${filled}/${slots}`);
+                setField("aAvail", `${availableSpots} spots left`);
+                setProgress(filled, slots);
+            } catch (error) {
+                console.error(error);
+                mwToast(error.message || "Could not join activity.", "error");
+            }
+        });
+    }
+});
+
+</script>
+</body>
+</html>

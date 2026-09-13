@@ -1,0 +1,60 @@
+<!-- app sidebar -->
+<aside class="sidebar" id="appSidebar">
+  <div class="brand">
+    <span class="logo"><i class="fa-solid fa-water"></i></span>
+    <div class="name">MarineWatch <small>Diver portal</small></div>
+  </div>
+  <div class="nav-section">
+    <div class="nav-title">Overview</div>
+    <!-- nav bar -->
+    <nav class="nav flex-column">
+      <a class="nav-link" href="diver-dashboard.html" data-sb="dashboard"><i class="fa-solid fa-gauge-high"></i>Dashboard</a>
+<a class="nav-link" href="map.html" data-sb="map">
+    <i class="fa-solid fa-map-location-dot"></i>
+    Marine Map
+</a>
+    </nav>
+  </div>
+
+  <div class="nav-section">
+    <div class="nav-title">Pollution reports</div>
+    <!-- nav bar -->
+    <nav class="nav flex-column">
+      <a class="nav-link" href="submit-report.html" data-sb="submit"><i class="fa-solid fa-cloud-arrow-up"></i>Submit report</a>
+      <a class="nav-link" href="my-reports.html" data-sb="my-reports"><i class="fa-solid fa-folder-open"></i>My reports</a>
+    </nav>
+  </div>
+  
+<div class="nav-section">
+
+    <div class="nav-title">Activities</div>
+
+    <!-- nav bar -->
+    <nav class="nav flex-column">
+
+        <a class="nav-link" href="activities.html" data-sb="activities">
+            <i class="fa-solid fa-people-group"></i>
+            Activities
+        </a>
+
+        <a class="nav-link" href="my-activities.html" data-sb="joined">
+            <i class="fa-solid fa-calendar-check"></i>
+            My Activities
+        </a>
+
+    </nav>
+
+</div>
+
+  <div class="nav-section">
+    <div class="nav-title">Account</div>
+    <!-- nav bar -->
+    <nav class="nav flex-column">
+      <a class="nav-link" href="profile.html" data-sb="profile"><i class="fa-solid fa-user"></i>Profile</a>
+    </nav>
+  </div>
+
+  <div class="sidebar-footer">
+    <a href="login.html" class="nav-link mt-2" onclick="localStorage.removeItem('mw_user'); localStorage.removeItem('mw_token');"><i class="fa-solid fa-arrow-right-from-bracket"></i>Log out</a>
+  </div>
+</aside>
